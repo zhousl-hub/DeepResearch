@@ -61,6 +61,8 @@ class QueryGenerationState(TypedDict):
 class WebSearchState(TypedDict):
     search_query: str
     id: str
+    # ToolSmith MVP：把 OverallState.fresh_level 穿过 Send 传给 _web_search
+    fresh_level: str
 
 class PlanState(TypedDict):
     plan: str

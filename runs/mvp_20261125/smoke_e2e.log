@@ -1,0 +1,83 @@
+2026-11-25 21:49:44.762 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (2843 字)
+2026-11-25 21:49:44.764 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+P1 status unconfirmed plan_len 2843
+2026-11-25 21:49:44.767 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-25 21:49:44.768 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+2026-11-25 21:49:44.976 +08:00 | INFO     | agent.kb.fact_store:_ensure_collection:285 - [KB] collection 'research_facts' already exists
+2026-11-25 21:49:44.976 +08:00 | INFO     | agent.sub_agents.research_agent:_get_kb_store:68 - [KB] FactStor 连接到 Milvus
+2026-11-25 21:49:44.979 +08:00 | DEBUG    | agent.reranker:__init__:79 - [Reranker] 已初始化（KB 和 Web 精排均已禁用）
+2026-11-25 21:49:44.979 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 21:49:45.424 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: ToolSmith 论文 arXiv 2611.31198 是什么？最近发布效果如何？
+Assistant:...' → 20 hits (top score=0.654)
+2026-11-25 21:49:45.424 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-25 21:49:45.424 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-25 21:49:45.427 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 21:49:48.402 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['arXiv 2611.31198 ToolSmith paper authors abstract version history method experiments', 'ToolSmith arXiv 2611.31198 GitHub benchmark results code reproducibility citations community discussion 2026']
+2026-11-25 21:49:48.460 +08:00 | INFO     | agent.search_cache:_get_redis:75 - [Cache] Redis 连接成功，缓存跨实例共享
+2026-11-25 21:49:48.461 +08:00 | INFO     | agent.search_cache:_get_redis:75 - [Cache] Redis 连接成功，缓存跨实例共享
+2026-11-25 21:49:48.468 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'arXiv 2611.31198 ToolSmith paper authors abstract version history method experim' 未命中，将通过MCP搜索
+2026-11-25 21:49:48.468 +08:00 | INFO     | agent.base_agent:__init__:43 - 速率限制器已初始化: 最大QPS=12.0, 最小间隔=0.083秒
+2026-11-25 21:49:48.577 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith arXiv 2611.31198 GitHub benchmark results code reproducibility citatio' 未命中，将通过MCP搜索
+2026-11-25 21:49:50.208 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith arXiv 2611.31198 GitHub benchmark results code reproducibility citatio' （10 items, TTL=3600s）→ Redis
+2026-11-25 21:49:50.208 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 21:49:50.211 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 21:49:50.213 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'arXiv 2611.31198 ToolSmith paper authors abstract version history method experim' （10 items, TTL=3600s）→ Redis
+2026-11-25 21:49:50.213 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 21:49:50.215 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 21:50:01.161 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'arXiv 2611.31198 ToolSmith paper authors abstract version history method experiments'
+2026-11-25 21:50:01.164 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 21:50:03.034 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith arXiv 2611.31198 GitHub benchmark results code reproducibility citations community discussion 2026'
+2026-11-25 21:50:03.037 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 21:51:09.353 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (848 chars)
+2026-11-25 21:51:09.353 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 21:51:09.936 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 21:51:19.793 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 21:51:19.795 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 21:51:52.037 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前从网络采集的信息不足以撰写关于 ToolSmith（arXiv:2611.31198）的完整研究报告。主要缺口包括：(1) 论文身份核验未完成：尚未确认 a...'
+2026-11-25 21:51:52.038 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-25 21:51:52.073 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '核实 arXiv:2611.31198 的官方页面：确认标题是否为 ToolSmith，获取作者全名、机构、提交和版本历史、官方摘要、BibTeX 条目，并验证' 未命中，将通过MCP搜索
+2026-11-25 21:51:52.073 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '检索 ToolSmith 论文的完整方法与实验：包括多模态搜索智能体工具生成框架的训练/推理流程、全部基准名称与完整结果表、消融实验、与 Toolformer/' 未命中，将通过MCP搜索
+2026-11-25 21:51:52.073 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-25 21:51:52.158 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-25 21:51:54.010 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '核实 arXiv:2611.31198 的官方页面：确认标题是否为 ToolSmith，获取作者全名、机构、提交和版本历史、官方摘要、BibTeX 条目，并验证' （10 items, TTL=3600s）→ Redis
+2026-11-25 21:51:54.011 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 21:51:54.013 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 21:51:54.195 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '检索 ToolSmith 论文的完整方法与实验：包括多模态搜索智能体工具生成框架的训练/推理流程、全部基准名称与完整结果表、消融实验、与 Toolformer/' （10 items, TTL=3600s）→ Redis
+2026-11-25 21:51:54.195 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 21:51:54.198 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 21:52:06.515 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： '核实 arXiv:2611.31198 的官方页面：确认标题是否为 ToolSmith，获取作者全名、机构、提交和版本历史、官方摘要、BibTeX 条目，并验证 https://threesr.github.io/toolsmith/ 是否为该论文的项目页及其指向的 GitHub 代码仓库地址。'
+2026-11-25 21:52:06.517 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 21:52:12.466 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： '检索 ToolSmith 论文的完整方法与实验：包括多模态搜索智能体工具生成框架的训练/推理流程、全部基准名称与完整结果表、消融实验、与 Toolformer/ToolCUA 等同类工具调用方法的对比，并收集 GitHub 代码/数据可用性、开源许可证、公开复现报告、引用数以及 Twitter/HN/Reddit/知乎社区评价。'
+2026-11-25 21:52:12.469 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 21:53:18.528 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1933 chars)
+2026-11-25 21:53:18.528 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 21:53:19.042 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 21:54:19.448 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2168 chars)
+2026-11-25 21:54:19.448 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 21:54:19.880 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 21:54:19.882 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 21:54:19.884 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 21:54:43.215 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息存在多处混杂和不足：1）论文身份虽已确认标题为 ToolSmith: An Automatic Tool-Generation Framework fo...'
+2026-11-25 21:54:43.216 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-25 21:54:43.219 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-25 21:54:54.481 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (1868 chars)
+2026-11-25 21:54:54.482 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 21:54:54.482 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-25 21:55:58.801 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (14275 chars)
+2026-11-25 21:55:58.802 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 21:56:42.236 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.8/10, issues=7 (critical=0, major=1, minor=6), ready_for_polish=True
+2026-11-25 21:56:42.236 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:201 - [WriterAgent] Critic ready_for_polish (score=6.8/10) → polish
+2026-11-25 21:56:42.238 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-25 21:57:25.225 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (16860 chars), 23 sources cited, 0 revision(s)
+P2 keys ['critic_feedback', 'critic_score', 'follow_up_queries', 'fresh_level', 'initial_search_query_count', 'is_sufficient', 'knowledge_gap', 'max_research_loops', 'max_revisions', 'messages', 'number_of_ran_queries', 'plan', 'plan_messages', 'plan_status', 'ready_for_polish', 'report_draft', 'report_outline', 'research_loop_count', 'revision_count', 'search_query', 'sources_gathered', 'web_search_result']
+fresh medium loops 2 sources 103
+report_len 16860
+report_preview # ToolSmith（arXiv:2611.31198）科研报告
+
+> 说明：截至 2026-11-25，给定材料主要来自聚合页、索引片段与二手解读，尚未直接抓取 arXiv:2611.31198 官方页全文。因此，下文将“多片段一致但未一手核验”的信息标为中等证据，并严格区分“论文片段自报结果”与“独立复现结果”。
+
+## 1. 结论摘要与论文身份核验
+
+### 1.1 一句话结论与证据强度分级
+
+**一句话结论：** ToolSmith 是一篇面向多模态搜索智能体的自动工具生成框架论文。其核心思路是在精简基础工具库（lean base tool library）之上，由 generato

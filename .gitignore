@@ -1,2 +1,19 @@
 # macOS
 .DS_Store
+
+# 密钥与本地环境（绝不提交）
+.env
+backend/.env
+
+# 运行产物与依赖
+backend/logs/
+**/__pycache__/
+*.py[cod]
+*egg-info/
+*.egg-info/
+frontend/node_modules/
+exports/
+
+# 编辑器
+.idea/
+.vscode/

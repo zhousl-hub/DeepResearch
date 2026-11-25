@@ -10,6 +10,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 import os
 import sys
@@ -36,6 +37,11 @@ from eval.judge import (
 )
 
 load_dotenv()
+
+
+def _invoke_graph(input_state: dict, config: dict) -> dict:
+    """同步包装 ainvoke：主图节点均为 async，sync invoke 会直接失败。"""
+    return asyncio.run(graph.ainvoke(input_state, config=config))
 
 
 # ============================================================
@@ -196,7 +202,7 @@ class Evaluator:
         }
 
         # ---- 阶段 1：触发计划生成 ----
-        phase1_state = graph.invoke(
+        phase1_state = _invoke_graph(
             {"messages": [HumanMessage(content=cfg.topic)]},
             config=config,
         )
@@ -207,7 +213,7 @@ class Evaluator:
             if capture:
                 capture.patch()
             try:
-                phase2_state = graph.invoke(
+                phase2_state = _invoke_graph(
                     {
                         "messages": [
                             HumanMessage(content=cfg.topic),
@@ -226,7 +232,7 @@ class Evaluator:
             plan_b = ""
         else:
             # ---- 阶段 2：发送用户反馈 ----
-            phase2_state = graph.invoke(
+            phase2_state = _invoke_graph(
                 {
                     "messages": [
                         HumanMessage(content=cfg.topic),
@@ -247,7 +253,7 @@ class Evaluator:
                 if capture:
                     capture.patch()
                 try:
-                    phase2_state = graph.invoke(
+                    phase2_state = _invoke_graph(
                         {
                             "messages": [
                                 HumanMessage(content=cfg.topic),

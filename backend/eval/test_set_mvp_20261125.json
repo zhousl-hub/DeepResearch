@@ -1,0 +1,81 @@
+{
+  "description": "ToolSmith MVP A/B 测试集 — 2026-11-25，5 个时效主题。expected_key_facts 仅供评分对照，禁止喂给模型。",
+  "topics": [
+    {
+      "topic": "ToolSmith 是什么，四阶段怎么跑，效果到底多大？",
+      "domain": "AI研究",
+      "difficulty": "high",
+      "fresh_level_hint": "high",
+      "initial_search_query_count": 3,
+      "max_research_loops": 3,
+      "expected_key_facts": [
+        "arXiv:2611.31198",
+        "2026年11月23日提交",
+        "UCLA + AWS GenAI",
+        "EMNLP 2026 Findings",
+        "8个基础工具",
+        "入库264个新工具",
+        "域内/域外提升 +1.04 到 +2.98",
+        "36/39个格子提升"
+      ]
+    },
+    {
+      "topic": "OpenAI 公开了什么，又提议了什么？关注最近一周尤其是11月20日到25日的动态。",
+      "domain": "AI产业",
+      "difficulty": "high",
+      "fresh_level_hint": "high",
+      "initial_search_query_count": 3,
+      "max_research_loops": 3,
+      "expected_key_facts": [
+        "公开五年预训练困惑度曲线",
+        "提议行业共设发展上限",
+        "微软率先加入",
+        "英伟达董事会恢复黄仁勋CEO职务"
+      ]
+    },
+    {
+      "topic": "LMArena 文本榜和 Agent Arena 到底是不是同一张榜？最近30天的排名分别是什么？",
+      "domain": "AI评测",
+      "difficulty": "medium",
+      "fresh_level_hint": "medium",
+      "initial_search_query_count": 3,
+      "max_research_loops": 3,
+      "expected_key_facts": [
+        "文本榜与 Agent Arena 不是同一张榜",
+        "文本榜前三：Carbon 1527、Argon 1520、Neon 1513（Google）",
+        "Agent Arena 第一 Claude Fable 5.2 (Max) 1449",
+        "Agent Arena 第二 Claude Opus 5.5 1342",
+        "Agent Arena 第三 Gemini 4 Neon 1331"
+      ]
+    },
+    {
+      "topic": "Artificial Analysis 现在智能指数第一是谁，开源最高是谁？关注 v5.0.2 最近30天数据。",
+      "domain": "AI评测",
+      "difficulty": "medium",
+      "fresh_level_hint": "medium",
+      "initial_search_query_count": 3,
+      "max_research_loops": 3,
+      "expected_key_facts": [
+        "版本 v5.0.2",
+        "第一 Claude Fable 5.2 (Max) 65分",
+        "第二梯队 GPT-6.2 Astra (Max) 62分",
+        "开源权重最高 Kimi K3.1 Pro 47分",
+        "共124个模型",
+        "最快 GPT-6 Luna (Low) 0.6分钟/任务"
+      ]
+    },
+    {
+      "topic": "2026年11月1日到25日这波大模型发布与榜单变化，按时间排清楚。",
+      "domain": "AI产业",
+      "difficulty": "high",
+      "fresh_level_hint": "high",
+      "initial_search_query_count": 3,
+      "max_research_loops": 3,
+      "expected_key_facts": [
+        "Claude Fable 5.2 同时领跑 Agent Arena 和 AA 智能指数",
+        "Gemini 4 Neon 登顶 LiveBench 2.0",
+        "The Batch 11月20日提到 Claude Fable 5.2、Anthropic IPO 和 World Labs Atlas"
+      ]
+    }
+  ]
+}

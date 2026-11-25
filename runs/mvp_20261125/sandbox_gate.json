@@ -1,0 +1,242 @@
+{
+  "ok": true,
+  "stats": {
+    "call_count": 3,
+    "cache_hit_count": 0,
+    "cache_miss_count": 3,
+    "fallback_count": 0
+  },
+  "results": [
+    {
+      "query": "Anthropic 最近一周有什么产品或融资动态",
+      "facts": [
+        {
+          "statement": "当地时间11月10日，Anthropic在官网放出IPO路演视频，正式启动上市进程。",
+          "url": "https://zhuanlan.zhihu.com/p/2104877826482746843",
+          "published_date": "unknown",
+          "source_type": "other"
+        },
+        {
+          "statement": "Anthropic PBC寻求在首次公开募股中实现约1.4万亿美元的完全摊薄估值，力争成为首家上市的前沿人工智能实验室。",
+          "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001908ude8",
+          "published_date": "2026年11月11日00时",
+          "source_type": "news"
+        },
+        {
+          "statement": "Anthropic及其部分股东寻求通过IPO和私募配售筹集至多904亿美元；根据提交给美国证券交易委员会的文件，基础发行部分拟筹资至多644亿美元，股票推介价格区间为每股70至78美元。",
+          "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001908ude8",
+          "published_date": "2026年11月11日00时",
+          "source_type": "news"
+        },
+        {
+          "statement": "Anthropic拟在纳斯达克发行总计8.25亿股股票，发行价格区间为每股70至78美元，按该价格区间计算公开发行总规模预计为577.5亿至643.5亿美元。",
+          "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001908ude8",
+          "published_date": "2026年11月11日00时",
+          "source_type": "news"
+        },
+        {
+          "statement": "上述发行中，公司将发行约8.0135亿股A类普通股，现有股东另将出售约2365万股。",
+          "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001908ude8",
+          "published_date": "2026年11月11日00时",
+          "source_type": "news"
+        },
+        {
+          "statement": "Anthropic已与AMD、博通、Alphabet旗下谷歌、美光科技、微软、英伟达及台积电相关合作伙伴签订战略协议，这些合作伙伴将通过私募配售合计认购260亿美元的Anthropic N类普通股。",
+          "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001908ude8",
+          "published_date": "2026年11月11日00时",
+          "source_type": "news"
+        },
+        {
+          "statement": "Anthropic计划在纳斯达克全球精选市场上市，股票代码为“ANT”。",
+          "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001908ude8",
+          "published_date": "2026年11月11日00时",
+          "source_type": "news"
+        },
+        {
+          "statement": "高盛和摩根士丹利担任Anthropic本次发行的牵头承销商。",
+          "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001908ude8",
+          "published_date": "2026年11月11日00时",
+          "source_type": "news"
+        },
+        {
+          "statement": "据称，Anthropic的首次公开募股已获得足额认购，认购订单可覆盖全部可售股份。",
+          "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001908ude8",
+          "published_date": "2026年11月11日00时",
+          "source_type": "news"
+        },
+        {
+          "statement": "Anthropic拟授予承销商一项为期30天的超额配售权，允许其额外购买最多1.2375亿股股票。",
+          "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001908ude8",
+          "published_date": "2026年11月11日00时",
+          "source_type": "news"
+        },
+        {
+          "statement": "Anthropic拟于11月18日定价、11月19日以代码“ANT”登陆纳斯达克全球精选市场。",
+          "url": "https://zhuanlan.zhihu.com/p/2104877826482746843",
+          "published_date": "unknown",
+          "source_type": "other"
+        }
+      ]
+    },
+    {
+      "query": "Hugging Face 最新开源模型排行有哪些变化",
+      "facts": [
+        {
+          "statement": "2026年11月25日的全球开源双榜速递称，其内容包含Hugging Face最快上新的6款开源模型。",
+          "url": "https://www.douyin.com/note/7712084201633221939",
+          "published_date": "2026年11月25日",
+          "source_type": "other"
+        },
+        {
+          "statement": "该速递称将用14张模板卡展示具体名称、下载量、Star星标与核心用法。",
+          "url": "https://www.douyin.com/note/7712084201633221939",
+          "published_date": "2026年11月25日",
+          "source_type": "other"
+        },
+        {
+          "statement": "2026年第46周（11月14日）Hugging Face本周热榜Top 5依次为Jackrong/DeepSeek-V4-Pro-Qwen3.5-9B、MiniMaxAI/MiniMax-H3-Image、Lightricks/LTX-2.5、Qwen/Qwen3.8-27B、NousResearch/Arete-27B。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "该汇总注明数据来源为Hugging Face Trending，同一模型的GGUF、量化、去审查、ComfyUI衍生仓库已合并计入原模型。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "Jackrong/DeepSeek-V4-Pro-Qwen3.5-9B是将DeepSeek V4 Pro蒸馏到Qwen3.5-9B的数学模型。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "该汇总称，Jackrong/DeepSeek-V4-Pro-Qwen3.5-9B的Heretic去审查衍生仓库冲上榜首。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "该汇总称，Jackrong/DeepSeek-V4-Pro-Qwen3.5-9B约七成点赞来自11月注册的账号。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "MiniMaxAI/MiniMax-H3-Image的文生图和改图共用一个检查点，直接输出约16MP图片。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "该汇总称，MiniMaxAI/MiniMax-H3-Image在Artificial Analysis开源权重改图、文生图榜目前均排第一。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "MiniMaxAI/MiniMax-H3-Image的许可不含欧盟、英国、韩国和美国，年收入超100万美元需另行授权。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "Lightricks/LTX-2.5是22B音视频联合生成模型，并再登热榜。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "该汇总称，Lightricks/LTX-2.5的点赞中近六成来自8月之后注册的账号。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "该汇总称，Lightricks/LTX-2.5在第三方视频竞技场仍处中下游。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "Qwen/Qwen3.8-27B是27B稠密多模态模型，其量化和去审查衍生仓库回到前排。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "NousResearch/Arete-27B在Qwen3.8-27B上做监督微调，调整敏感话题上的拒答和表述。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        },
+        {
+          "statement": "该汇总称，NousResearch/Arete-27B的评测为作者自建，第三方尚未收录。",
+          "url": "https://www.bilibili.com/video/BV1Chs56yEbx/",
+          "published_date": "2026年11月14日",
+          "source_type": "other"
+        }
+      ]
+    },
+    {
+      "query": "欧盟 AI Act 最新实施时间表 2026年11月",
+      "facts": [
+        {
+          "statement": "《AI Act》于2024年8月1日生效，并于2026年8月2日总体适用，但部分规则存在例外和过渡期。",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "published_date": "unknown",
+          "source_type": "official"
+        },
+        {
+          "statement": "禁止类AI实践与AI素养义务自2025年2月2日起适用。",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "published_date": "unknown",
+          "source_type": "official"
+        },
+        {
+          "statement": "治理规则及通用人工智能模型（GPAI）义务自2025年8月2日起适用。",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "published_date": "unknown",
+          "source_type": "official"
+        },
+        {
+          "statement": "附件III所列敏感领域高风险AI（包括生物识别、关键基础设施、教育、就业、移民、庇护和边境控制）自2027年12月2日起适用。",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "published_date": "unknown",
+          "source_type": "official"
+        },
+        {
+          "statement": "嵌入受监管产品的高风险AI系统（附件I）的过渡期延长至2028年8月2日。",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "published_date": "unknown",
+          "source_type": "official"
+        },
+        {
+          "statement": "AI Omnibus立法提案于2025年11月19日获通过（adopted），2026年5月7日达成政治协议，2026年7月27日生效。",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "published_date": "unknown",
+          "source_type": "official"
+        },
+        {
+          "statement": "新增第9类禁止情形——生成非自愿性露骨/亲密内容或儿童性虐待材料（CSAM）的AI系统（如AI“脱衣”应用）——于2026年12月生效，并作为AI Omnibus的一部分引入。",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "published_date": "unknown",
+          "source_type": "official"
+        },
+        {
+          "statement": "CSDN文章称，2026年8月2日起通用大模型GPAI义务、透明度义务、AI生成内容标记义务正式执行，AI办公室开启大模型监管权力。",
+          "url": "https://blog.csdn.net/2303_77987480/article/details/164043600",
+          "published_date": "unknown",
+          "source_type": "other"
+        },
+        {
+          "statement": "CSDN文章称，2026年12月2日为存量生成式AI完成水印/标记义务的截止日。",
+          "url": "https://blog.csdn.net/2303_77987480/article/details/164043600",
+          "published_date": "unknown",
+          "source_type": "other"
+        }
+      ]
+    }
+  ]
+}

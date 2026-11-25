@@ -31,7 +31,7 @@ from agent.prompts import (
     reflection_instructions,
     web_searcher_instructions,
 )
-from agent.state import OverallState, QueryGenerationState, WebSearchState
+from agent.state import OverallState, WebSearchState
 from agent.tools_and_schemas import Reflection, SearchQueryList
 from agent.utils import get_research_topic, resolve_urls
 from agent.kb import FactStore, FactExtractor
@@ -167,26 +167,98 @@ def _generate_queries(state: OverallState, config: RunnableConfig) -> dict:
     return {"search_query": result.query, "initial_search_query_count": state["initial_search_query_count"]}
 
 
-def _fan_out_to_web_search(state: QueryGenerationState) -> list[Send]:
-    """Fan-out: 每个查询调用一次 web_search。"""
+def _fan_out_to_web_search(state: OverallState) -> list[Send]:
+    """Fan-out: 每个查询调用一次 web_search，并传入 fresh_level。"""
+    fresh_level = state.get("fresh_level", "medium") or "medium"
     return [
-        Send(_WEB_SEARCH, {"search_query": q, "id": int(idx)})
+        Send(
+            _WEB_SEARCH,
+            {
+                "search_query": q,
+                "id": int(idx),
+                "fresh_level": fresh_level,
+            },
+        )
         for idx, q in enumerate(state["search_query"])
     ]
 
 
 def _web_search(state: WebSearchState, config: RunnableConfig) -> dict:
-    """搜索单个查询并汇总结果。"""
+    """搜索单个查询并汇总结果。
+
+    fresh_level != low 且主题有时效要求时，优先走 time_aware_search；
+    失败则回退到原有 WebSearchAgent 路径。
+    """
     configurable = Configuration.from_runnable_config(config)
+    fresh_level = state.get("fresh_level", "medium") or "medium"
+    query = state["search_query"]
+
+    # ── ToolSmith：时间感知搜索 ──────────────────────────────────
+    from agent.tools.generated_tools import (
+        format_facts_as_summary,
+        should_use_time_aware_search,
+        time_aware_search,
+    )
+
+    if should_use_time_aware_search(query, fresh_level=fresh_level):
+        facts = time_aware_search(query, fresh_level=fresh_level)
+        if facts:
+            long2short = resolve_urls(
+                [{"url": f["url"], "title": f["statement"][:80], "snippet": f["statement"]} for f in facts],
+                state["id"],
+            )
+            sources = [
+                {
+                    "short_url": long2short[f["url"]],
+                    "value": f["url"],
+                    "label": f["statement"][:80],
+                }
+                for f in facts
+                if f["url"] in long2short
+            ]
+            summary = format_facts_as_summary(facts)
+            logger.info(
+                f"[ResearchAgent] time_aware_search 命中：query={query!r} "
+                f"fresh_level={fresh_level} facts={len(facts)}"
+            )
+            # KB 存储（与原路径一致）
+            try:
+                store = _get_kb_store()
+                if store:
+                    extractor = _get_kb_extractor()
+                    topic = get_research_topic(state.get("messages", []))
+                    kb_facts = extractor.extract(summary, research_topic=topic)
+                    if kb_facts:
+                        short2long = {v: k for k, v in long2short.items()}
+                        for f in kb_facts:
+                            f["source_url"] = short2long.get(f["source_url"], f["source_url"])
+                            f["research_topic"] = topic
+                        store.add_facts(kb_facts)
+            except (KBConnectionError, KBEmbeddingError) as exc:
+                logger.warning(f"[KB] 跳过存储（瞬时错误）: {exc}")
+            except (KBConfigError, KBEmbeddingFatalError) as exc:
+                logger.error(f"[KB] 跳过存储（永久错误，需人工修复）: {exc}")
+            except Exception as exc:
+                logger.warning(f"[KB] 跳过存储（未知错误）: {exc}")
+
+            return {
+                "sources_gathered": sources,
+                "search_query": [query],
+                "web_search_result": [summary],
+            }
+        logger.info(
+            f"[ResearchAgent] time_aware_search 无结果，回退原搜索：query={query!r}"
+        )
+
     searcher = WebSearchAgent()
-    response = searcher.step(prompt=state["search_query"], count=10)
+    response = searcher.step(prompt=query, count=10)
 
     if not response:
-        logger.error(f"[ResearchAgent] 搜索结果为空： '{state['search_query']}'")
+        logger.error(f"[ResearchAgent] 搜索结果为空： '{query}'")
         return {
             "sources_gathered": [],
-            "search_query": [state["search_query"]],
-            "web_search_result": [f"未找到关于 '{state['search_query']}' 的搜索结果"],
+            "search_query": [query],
+            "web_search_result": [f"未找到关于 '{query}' 的搜索结果"],
         }
 
     # ── 交叉编码器精排 ────────────────────────────────────────────
@@ -316,9 +388,16 @@ def _route_after_critique(state: OverallState, config: RunnableConfig):
         return END  # ← exits sub-graph, parent takes over
     else:
         logger.info(f"[ResearchAgent] 继续循环 ({state['research_loop_count']}/{max_loops})")
+        fresh_level = state.get("fresh_level", "medium") or "medium"
         return [
-            Send(_WEB_SEARCH,
-                 {"search_query": q, "id": state["number_of_ran_queries"] + int(idx)})
+            Send(
+                _WEB_SEARCH,
+                {
+                    "search_query": q,
+                    "id": state["number_of_ran_queries"] + int(idx),
+                    "fresh_level": fresh_level,
+                },
+            )
             for idx, q in enumerate(state["follow_up_queries"])
         ]
 
