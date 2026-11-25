@@ -1,0 +1,399 @@
+{
+  "judge_model": "deepseek-v4-pro",
+  "judge_family_note": "AVAILABLE_MODELS 仅 deepseek-flash / deepseek-v4-pro，无跨家族评委；采用盲评（评委不知哪份是新工具版）+ 人工抽查。",
+  "decision": "删",
+  "reasons": {
+    "better_count>=3": true,
+    "no_clear_worse": false,
+    "timeliness_or_citation_up": true,
+    "tool_actually_called": true,
+    "better": 3,
+    "worse": 2,
+    "tie": 0,
+    "error": 0
+  },
+  "baseline": {
+    "label": "baseline",
+    "enabled": false,
+    "judge_model": "deepseek-v4-pro",
+    "stats": {
+      "call_count": 0,
+      "cache_hit_count": 0,
+      "cache_miss_count": 0,
+      "fallback_count": 0
+    },
+    "scores": [
+      {
+        "topic": "ToolSmith 是什么，四阶段怎么跑，效果到底多大？",
+        "error": null,
+        "overall": 3.8,
+        "dims": {
+          "factual_accuracy": 3,
+          "information_coverage": 4,
+          "logical_structure": 5,
+          "timeliness": 4,
+          "citation_quality": 3
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": false,
+        "fresh_level": "medium",
+        "tool_calls": 0,
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "fallbacks": 0,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_ToolSmith_是什么_四阶段怎么跑_效果到底多大_.md",
+        "report_chars": 16453
+      },
+      {
+        "topic": "OpenAI 公开了什么，又提议了什么？关注最近一周尤其是11月20日到25日的动态。",
+        "error": null,
+        "overall": 4.6,
+        "dims": {
+          "factual_accuracy": 4,
+          "information_coverage": 5,
+          "logical_structure": 5,
+          "timeliness": 5,
+          "citation_quality": 4
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": true,
+        "fresh_level": "medium",
+        "tool_calls": 0,
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "fallbacks": 0,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_OpenAI_公开了什么_又提议了什么_关注最近一周尤其是11月20日到25日的动态_.md",
+        "report_chars": 19405
+      },
+      {
+        "topic": "LMArena 文本榜和 Agent Arena 到底是不是同一张榜？最近30天的排名分别是什么？",
+        "error": null,
+        "overall": 4.2,
+        "dims": {
+          "factual_accuracy": 4,
+          "information_coverage": 4,
+          "logical_structure": 5,
+          "timeliness": 4,
+          "citation_quality": 4
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": false,
+        "fresh_level": "medium",
+        "tool_calls": 0,
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "fallbacks": 0,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_LMArena_文本榜和_Agent_Arena_到底是不是同一张榜_最近30天的排名分别是什么_.md",
+        "report_chars": 17068
+      },
+      {
+        "topic": "Artificial Analysis 现在智能指数第一是谁，开源最高是谁？关注 v5.0.2 最近30天数据。",
+        "error": null,
+        "overall": 4.2,
+        "dims": {
+          "factual_accuracy": 4,
+          "information_coverage": 5,
+          "logical_structure": 5,
+          "timeliness": 3,
+          "citation_quality": 4
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": false,
+        "fresh_level": "medium",
+        "tool_calls": 0,
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "fallbacks": 0,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_Artificial_Analysis_现在智能指数第一是谁_开源最高是谁_关注_v5_0_2_最近30天数据_.md",
+        "report_chars": 16197
+      },
+      {
+        "topic": "2026年11月1日到25日这波大模型发布与榜单变化，按时间排清楚。",
+        "error": null,
+        "overall": 4.4,
+        "dims": {
+          "factual_accuracy": 4,
+          "information_coverage": 4,
+          "logical_structure": 5,
+          "timeliness": 5,
+          "citation_quality": 4
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": false,
+        "fresh_level": "medium",
+        "tool_calls": 0,
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "fallbacks": 0,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_2026年11月1日到25日这波大模型发布与榜单变化_按时间排清楚_.md",
+        "report_chars": 27104
+      }
+    ]
+  },
+  "treatment": {
+    "label": "treatment",
+    "enabled": true,
+    "judge_model": "deepseek-v4-pro",
+    "stats": {
+      "call_count": 20,
+      "cache_hit_count": 0,
+      "cache_miss_count": 20,
+      "fallback_count": 4
+    },
+    "scores": [
+      {
+        "topic": "ToolSmith 是什么，四阶段怎么跑，效果到底多大？",
+        "error": null,
+        "overall": 4.6,
+        "dims": {
+          "factual_accuracy": 4,
+          "information_coverage": 5,
+          "logical_structure": 5,
+          "timeliness": 5,
+          "citation_quality": 4
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": false,
+        "fresh_level": "medium",
+        "tool_calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "fallbacks": 1,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_ToolSmith_是什么_四阶段怎么跑_效果到底多大_.md",
+        "report_chars": 7520
+      },
+      {
+        "topic": "OpenAI 公开了什么，又提议了什么？关注最近一周尤其是11月20日到25日的动态。",
+        "error": null,
+        "overall": 4.4,
+        "dims": {
+          "factual_accuracy": 5,
+          "information_coverage": 4,
+          "logical_structure": 5,
+          "timeliness": 4,
+          "citation_quality": 4
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": false,
+        "fresh_level": "medium",
+        "tool_calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "fallbacks": 1,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_OpenAI_公开了什么_又提议了什么_关注最近一周尤其是11月20日到25日的动态_.md",
+        "report_chars": 5276
+      },
+      {
+        "topic": "LMArena 文本榜和 Agent Arena 到底是不是同一张榜？最近30天的排名分别是什么？",
+        "error": null,
+        "overall": 4.6,
+        "dims": {
+          "factual_accuracy": 4,
+          "information_coverage": 5,
+          "logical_structure": 5,
+          "timeliness": 5,
+          "citation_quality": 4
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": false,
+        "fresh_level": "medium",
+        "tool_calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "fallbacks": 0,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_LMArena_文本榜和_Agent_Arena_到底是不是同一张榜_最近30天的排名分别是什么_.md",
+        "report_chars": 19980
+      },
+      {
+        "topic": "Artificial Analysis 现在智能指数第一是谁，开源最高是谁？关注 v5.0.2 最近30天数据。",
+        "error": null,
+        "overall": 4.8,
+        "dims": {
+          "factual_accuracy": 5,
+          "information_coverage": 5,
+          "logical_structure": 5,
+          "timeliness": 4,
+          "citation_quality": 5
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": false,
+        "fresh_level": "medium",
+        "tool_calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "fallbacks": 0,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_Artificial_Analysis_现在智能指数第一是谁_开源最高是谁_关注_v5_0_2_最近30天数据_.md",
+        "report_chars": 8326
+      },
+      {
+        "topic": "2026年11月1日到25日这波大模型发布与榜单变化，按时间排清楚。",
+        "error": null,
+        "overall": 4.2,
+        "dims": {
+          "factual_accuracy": 4,
+          "information_coverage": 4,
+          "logical_structure": 5,
+          "timeliness": 4,
+          "citation_quality": 4
+        },
+        "research_loop_count": 2,
+        "number_of_ran_queries": 6,
+        "is_sufficient": false,
+        "fresh_level": "medium",
+        "tool_calls": 4,
+        "cache_hits": 0,
+        "cache_misses": 4,
+        "fallbacks": 2,
+        "report_path": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_2026年11月1日到25日这波大模型发布与榜单变化_按时间排清楚_.md",
+        "report_chars": 19022
+      }
+    ]
+  },
+  "table": [
+    {
+      "topic": "ToolSmith 是什么，四阶段怎么跑，效果到底多大？",
+      "verdict": "更好",
+      "baseline_overall": 3.8,
+      "treatment_overall": 4.6,
+      "baseline_dims": {
+        "factual_accuracy": 3,
+        "information_coverage": 4,
+        "logical_structure": 5,
+        "timeliness": 4,
+        "citation_quality": 3
+      },
+      "treatment_dims": {
+        "factual_accuracy": 4,
+        "information_coverage": 5,
+        "logical_structure": 5,
+        "timeliness": 5,
+        "citation_quality": 4
+      },
+      "baseline_loops": 2,
+      "treatment_loops": 2,
+      "tool_calls": 4,
+      "cache_hits": 0,
+      "cache_misses": 4,
+      "baseline_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_ToolSmith_是什么_四阶段怎么跑_效果到底多大_.md",
+      "treatment_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_ToolSmith_是什么_四阶段怎么跑_效果到底多大_.md"
+    },
+    {
+      "topic": "OpenAI 公开了什么，又提议了什么？关注最近一周尤其是11月20日到25日的动态。",
+      "verdict": "变差",
+      "baseline_overall": 4.6,
+      "treatment_overall": 4.4,
+      "baseline_dims": {
+        "factual_accuracy": 4,
+        "information_coverage": 5,
+        "logical_structure": 5,
+        "timeliness": 5,
+        "citation_quality": 4
+      },
+      "treatment_dims": {
+        "factual_accuracy": 5,
+        "information_coverage": 4,
+        "logical_structure": 5,
+        "timeliness": 4,
+        "citation_quality": 4
+      },
+      "baseline_loops": 2,
+      "treatment_loops": 2,
+      "tool_calls": 4,
+      "cache_hits": 0,
+      "cache_misses": 4,
+      "baseline_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_OpenAI_公开了什么_又提议了什么_关注最近一周尤其是11月20日到25日的动态_.md",
+      "treatment_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_OpenAI_公开了什么_又提议了什么_关注最近一周尤其是11月20日到25日的动态_.md"
+    },
+    {
+      "topic": "LMArena 文本榜和 Agent Arena 到底是不是同一张榜？最近30天的排名分别是什么？",
+      "verdict": "更好",
+      "baseline_overall": 4.2,
+      "treatment_overall": 4.6,
+      "baseline_dims": {
+        "factual_accuracy": 4,
+        "information_coverage": 4,
+        "logical_structure": 5,
+        "timeliness": 4,
+        "citation_quality": 4
+      },
+      "treatment_dims": {
+        "factual_accuracy": 4,
+        "information_coverage": 5,
+        "logical_structure": 5,
+        "timeliness": 5,
+        "citation_quality": 4
+      },
+      "baseline_loops": 2,
+      "treatment_loops": 2,
+      "tool_calls": 4,
+      "cache_hits": 0,
+      "cache_misses": 4,
+      "baseline_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_LMArena_文本榜和_Agent_Arena_到底是不是同一张榜_最近30天的排名分别是什么_.md",
+      "treatment_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_LMArena_文本榜和_Agent_Arena_到底是不是同一张榜_最近30天的排名分别是什么_.md"
+    },
+    {
+      "topic": "Artificial Analysis 现在智能指数第一是谁，开源最高是谁？关注 v5.0.2 最近30天数据。",
+      "verdict": "更好",
+      "baseline_overall": 4.2,
+      "treatment_overall": 4.8,
+      "baseline_dims": {
+        "factual_accuracy": 4,
+        "information_coverage": 5,
+        "logical_structure": 5,
+        "timeliness": 3,
+        "citation_quality": 4
+      },
+      "treatment_dims": {
+        "factual_accuracy": 5,
+        "information_coverage": 5,
+        "logical_structure": 5,
+        "timeliness": 4,
+        "citation_quality": 5
+      },
+      "baseline_loops": 2,
+      "treatment_loops": 2,
+      "tool_calls": 4,
+      "cache_hits": 0,
+      "cache_misses": 4,
+      "baseline_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_Artificial_Analysis_现在智能指数第一是谁_开源最高是谁_关注_v5_0_2_最近30天数据_.md",
+      "treatment_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_Artificial_Analysis_现在智能指数第一是谁_开源最高是谁_关注_v5_0_2_最近30天数据_.md"
+    },
+    {
+      "topic": "2026年11月1日到25日这波大模型发布与榜单变化，按时间排清楚。",
+      "verdict": "变差",
+      "baseline_overall": 4.4,
+      "treatment_overall": 4.2,
+      "baseline_dims": {
+        "factual_accuracy": 4,
+        "information_coverage": 4,
+        "logical_structure": 5,
+        "timeliness": 5,
+        "citation_quality": 4
+      },
+      "treatment_dims": {
+        "factual_accuracy": 4,
+        "information_coverage": 4,
+        "logical_structure": 5,
+        "timeliness": 4,
+        "citation_quality": 4
+      },
+      "baseline_loops": 2,
+      "treatment_loops": 2,
+      "tool_calls": 4,
+      "cache_hits": 0,
+      "cache_misses": 4,
+      "baseline_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/baseline_2026年11月1日到25日这波大模型发布与榜单变化_按时间排清楚_.md",
+      "treatment_report": "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/treatment_2026年11月1日到25日这波大模型发布与榜单变化_按时间排清楚_.md"
+    }
+  ],
+  "generated_at": "2026-11-26T00:53:55.490795"
+}

@@ -1,0 +1,1336 @@
+2026-11-25 22:25:04.211 +08:00 | INFO     | agent.search_cache:_get_redis:75 - [Cache] Redis 连接成功，缓存跨实例共享
+2026-11-25 22:25:04.266 +08:00 | INFO     | agent.search_cache:clear_cache:190 - [Cache] cleared all 4 entries (Redis)
+2026-11-25 22:25:04.266 +08:00 | INFO     | eval.judge:__init__:165 - Judge 已初始化，模型=deepseek-v4-pro
+
+============================================================
+  MVP baseline: enabled=False, topics=5, judge=deepseek-v4-pro
+============================================================
+
+--- [baseline] 1/5 ToolSmith 是什么，四阶段怎么跑，效果到底多大？ ---
+2026-11-25 22:25:20.659 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (2719 字)
+2026-11-25 22:25:20.660 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-25 22:25:20.664 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-25 22:25:20.665 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+2026-11-25 22:25:20.884 +08:00 | INFO     | agent.kb.fact_store:_ensure_collection:285 - [KB] collection 'research_facts' already exists
+2026-11-25 22:25:20.884 +08:00 | INFO     | agent.sub_agents.research_agent:_get_kb_store:68 - [KB] FactStor 连接到 Milvus
+2026-11-25 22:25:20.884 +08:00 | DEBUG    | agent.reranker:__init__:79 - [Reranker] 已初始化（KB 和 Web 精排均已禁用）
+2026-11-25 22:25:20.884 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:25:21.189 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: ToolSmith 是什么，四阶段怎么跑，效果到底多大？
+Assistant: # 需求清晰度进度条: 35...' → 20 hits (top score=0.426)
+2026-11-25 22:25:21.189 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-25 22:25:21.190 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-25 22:25:21.193 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:25:26.716 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['ToolSmith arXiv 2611.31198 EMNLP 2026 automatic tool generation framework four-stage pipeline trajectory mining reuse growth decision tool generation verification benchmark results official paper', 'ToolSmith automatic tool generation independent evaluation benchmark comparison baseline limitations reproducibility enterprise ToolSmith AI agent tool evaluation disambiguation 2024 2025 2026']
+2026-11-25 22:25:26.903 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith arXiv 2611.31198 EMNLP 2026 automatic tool generation framework four-s' 未命中，将通过MCP搜索
+2026-11-25 22:25:26.903 +08:00 | INFO     | agent.base_agent:__init__:43 - 速率限制器已初始化: 最大QPS=12.0, 最小间隔=0.083秒
+2026-11-25 22:25:26.941 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith automatic tool generation independent evaluation benchmark comparison ' 未命中，将通过MCP搜索
+2026-11-25 22:25:26.941 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.046 秒
+2026-11-25 22:25:26.991 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.046秒
+2026-11-25 22:25:28.339 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith arXiv 2611.31198 EMNLP 2026 automatic tool generation framework four-s' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:25:28.340 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:25:28.343 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:25:28.536 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith automatic tool generation independent evaluation benchmark comparison ' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:25:28.537 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:25:28.538 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:25:39.391 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith arXiv 2611.31198 EMNLP 2026 automatic tool generation framework four-stage pipeline trajectory mining reuse growth decision tool generation verification benchmark results official paper'
+2026-11-25 22:25:39.394 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:25:44.288 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith automatic tool generation independent evaluation benchmark comparison baseline limitations reproducibility enterprise ToolSmith AI agent tool evaluation disambiguation 2024 2025 2026'
+2026-11-25 22:25:44.291 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:26:57.151 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1130 chars)
+2026-11-25 22:26:57.151 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:26:57.777 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:29:30.007 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1622 chars)
+2026-11-25 22:29:30.008 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:29:30.513 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:29:30.516 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 22:29:30.518 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:30:07.689 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息仅能大致定位到多模态搜索智能体的ToolSmith四阶段流水线及其“1至3分一致提升”的粗略宣称，尚不足以撰写结构完整的研报。主要缺口：①对象精准锁定不...'
+2026-11-25 22:30:07.690 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-25 22:30:07.799 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith 多模态搜索智能体 自动工具生成框架 官方论文 arXiv 2026 EMNLP benchmark 量化结果 任务成功率 ID OOD 基线' 未命中，将通过MCP搜索
+2026-11-25 22:30:07.800 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith 四阶段流水线 轨迹挖掘 双层触发器 Reuse-or-Grow 决策 工具生成 验证门控 实现细节 输入输出 依赖 失败模式 GitHub ' 未命中，将通过MCP搜索
+2026-11-25 22:30:07.800 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-25 22:30:07.888 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-25 22:30:09.845 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith 四阶段流水线 轨迹挖掘 双层触发器 Reuse-or-Grow 决策 工具生成 验证门控 实现细节 输入输出 依赖 失败模式 GitHub ' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:30:09.846 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:30:09.849 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:30:09.930 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith 多模态搜索智能体 自动工具生成框架 官方论文 arXiv 2026 EMNLP benchmark 量化结果 任务成功率 ID OOD 基线' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:30:09.930 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:30:09.933 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:30:24.425 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith 多模态搜索智能体 自动工具生成框架 官方论文 arXiv 2026 EMNLP benchmark 量化结果 任务成功率 ID OOD 基线 GPT-5 消融实验 指标 数据集 官方项目页 threesr.github.io/toolsmith'
+2026-11-25 22:30:24.428 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:30:27.047 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith 四阶段流水线 轨迹挖掘 双层触发器 Reuse-or-Grow 决策 工具生成 验证门控 实现细节 输入输出 依赖 失败模式 GitHub 代码 复现 独立评测 与 AAAI 2026 企业版 ToolSmith 区分'
+2026-11-25 22:30:27.049 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:31:33.907 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2128 chars)
+2026-11-25 22:31:33.907 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:31:34.353 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:31:43.790 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1280 chars)
+2026-11-25 22:31:43.790 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:31:44.262 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:31:44.264 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 22:31:44.266 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:32:10.989 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前采集信息存在三个主要缺口：1）ToolSmith 存在同名消歧问题，需确认研究对象是多模态搜索智能体版本（四阶段流水线）还是 AAAI 2026 企业版，并...'
+2026-11-25 22:32:10.990 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-25 22:32:10.993 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-25 22:32:25.346 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (986 chars)
+2026-11-25 22:32:25.347 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 22:32:25.347 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-25 22:33:43.573 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (17074 chars)
+2026-11-25 22:33:43.575 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 22:34:34.557 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=4.0/10, issues=7 (critical=1, major=4, minor=2), ready_for_polish=False
+2026-11-25 22:34:34.558 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=4.0/10) → draft
+2026-11-25 22:34:34.559 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 22:34:34.559 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-25 22:36:21.762 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (16609 chars)
+2026-11-25 22:36:21.763 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 22:36:58.571 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.5/10, issues=5 (critical=0, major=2, minor=3), ready_for_polish=False
+2026-11-25 22:36:58.572 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:215 - [WriterAgent] qualified exit (score=6.5/10 >= 6.0, revision=1) → polish
+2026-11-25 22:36:58.573 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-25 22:37:38.347 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (16453 chars), 0 sources cited, 1 revision(s)
+2026-11-25 22:37:38.350 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-25 22:37:38.353 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=3.8 loops=2 tool_calls=0 cache_hit=0 err=None
+
+--- [baseline] 2/5 OpenAI 公开了什么，又提议了什么？关注最近一周尤其是11月20日到25日的动态。 ---
+2026-11-25 22:39:07.471 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (2017 字)
+2026-11-25 22:39:07.473 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-25 22:39:07.476 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-25 22:39:07.477 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+2026-11-25 22:39:07.478 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:39:07.898 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: OpenAI 公开了什么，又提议了什么？关注最近一周尤其是11月20日到25日的动态。
+Assistant:...' → 20 hits (top score=0.535)
+2026-11-25 22:39:07.898 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-25 22:39:07.898 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-25 22:39:07.901 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:39:13.040 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['OpenAI 2026年11月20日至25日 官方公告 产品发布 技术更新 安全治理 政策提议 合作投资', 'OpenAI November 2026 November 20-25 policy proposal reactions regulators competitors media risk analysis']
+2026-11-25 22:39:13.089 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'OpenAI November 2026 November 20-25 policy proposal reactions regulators competi' 未命中，将通过MCP搜索
+2026-11-25 22:39:13.089 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'OpenAI 2026年11月20日至25日 官方公告 产品发布 技术更新 安全治理 政策提议 合作投资' 未命中，将通过MCP搜索
+2026-11-25 22:39:13.089 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-25 22:39:13.178 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-25 22:39:14.737 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'OpenAI 2026年11月20日至25日 官方公告 产品发布 技术更新 安全治理 政策提议 合作投资' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:39:14.737 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:39:14.737 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'OpenAI November 2026 November 20-25 policy proposal reactions regulators competi' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:39:14.738 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:39:14.740 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:39:14.740 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:39:48.749 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'OpenAI 2026年11月20日至25日 官方公告 产品发布 技术更新 安全治理 政策提议 合作投资'
+2026-11-25 22:39:48.753 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:39:55.067 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'OpenAI November 2026 November 20-25 policy proposal reactions regulators competitors media risk analysis'
+2026-11-25 22:39:55.069 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:41:22.811 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2193 chars)
+2026-11-25 22:41:22.811 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:41:23.462 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:51:56.507 +08:00 | WARNING  | agent.kb.extractor:extract:110 - [KB-extractor] JSON parse failed — LLM returned malformed JSON: Expecting value: line 1 column 1 (char 0)
+2026-11-25 22:51:56.508 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 22:51:56.510 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:52:40.913 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息可支撑初步事实梳理，但不足以完成符合默认专报结构的研报。主要缺口：1）缺少2026年11月20—25日OpenAI官方一手信源的逐日核实，未能区分官方发...'
+2026-11-25 22:52:40.914 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-25 22:52:41.112 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Reactions and strategic responses to OpenAI's November 20-25 2026 disclosures an' 未命中，将通过MCP搜索
+2026-11-25 22:52:41.114 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'OpenAI official primary sources and dated statements, November 20-25 2026: full ' 未命中，将通过MCP搜索
+2026-11-25 22:52:41.114 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.081 秒
+2026-11-25 22:52:41.205 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.081秒
+2026-11-25 22:52:42.827 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Reactions and strategic responses to OpenAI's November 20-25 2026 disclosures an' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:52:42.827 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:52:42.831 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:52:43.794 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'OpenAI official primary sources and dated statements, November 20-25 2026: full ' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:52:43.794 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:52:43.797 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:53:05.714 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'OpenAI official primary sources and dated statements, November 20-25 2026: full text of Use Policy changes, GPT-Live-1.1 API release, GPT-6.2 Astra/Sol release notes and availability, Chan Park letter to Governor Newsom on SB53, Safety IDs proposal, frontier risk management policy, Jakub Pachocki R&D cap/0.68-0.70 remarks, Onava protein design and Codex SETI results.'
+2026-11-25 22:53:05.718 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:53:08.577 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'Reactions and strategic responses to OpenAI's November 20-25 2026 disclosures and proposals: ICO Agentic AI compliance monitoring, US bank agent restrictions after DNS escape, Anthropic market/IPO and insider safety concerns, US/EU regulatory actions and statements, competitor and media/expert critiques, and official OpenAI rebuttals.'
+2026-11-25 22:53:08.580 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:54:24.107 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2063 chars)
+2026-11-25 22:54:24.107 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:54:24.482 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:54:26.011 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2289 chars)
+2026-11-25 22:54:26.011 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:54:26.402 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:54:26.404 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 22:54:26.406 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:54:56.714 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：True, gap='...'
+2026-11-25 22:54:56.715 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-25 22:54:56.717 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-25 22:55:15.752 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (1056 chars)
+2026-11-25 22:55:15.753 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 22:55:15.753 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-25 22:56:11.868 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (20437 chars)
+2026-11-25 22:56:11.870 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 22:57:20.982 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=5.5/10, issues=10 (critical=0, major=6, minor=4), ready_for_polish=False
+2026-11-25 22:57:20.982 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=5.5/10) → draft
+2026-11-25 22:57:20.983 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 22:57:20.983 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-25 22:59:49.165 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (17778 chars)
+2026-11-25 22:59:49.166 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:00:38.028 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.5/10, issues=8 (critical=0, major=2, minor=6), ready_for_polish=False
+2026-11-25 23:00:38.029 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:215 - [WriterAgent] qualified exit (score=6.5/10 >= 6.0, revision=1) → polish
+2026-11-25 23:00:38.030 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-25 23:01:27.785 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (19405 chars), 23 sources cited, 1 revision(s)
+2026-11-25 23:01:27.787 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-25 23:01:27.789 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=4.6 loops=2 tool_calls=0 cache_hit=0 err=None
+
+--- [baseline] 3/5 LMArena 文本榜和 Agent Arena 到底是不是同一张榜？最近30天的排名分别是什么？ ---
+2026-11-25 23:03:13.710 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (2777 字)
+2026-11-25 23:03:13.711 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-25 23:03:13.714 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-25 23:03:13.714 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+Task exception was never retrieved
+future: <Task finished name='Task-166' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+2026-11-25 23:03:13.726 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:03:14.219 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: LMArena 文本榜和 Agent Arena 到底是不是同一张榜？最近30天的排名分别是什么？
+Assi...' → 20 hits (top score=0.597)
+2026-11-25 23:03:14.219 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-25 23:03:14.219 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-25 23:03:14.221 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:03:17.961 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['LMArena Text Leaderboard 与 Agent Arena 是否同一榜单 主办方 网址 评测任务 评分机制 数据来源 对比 2026', 'LMArena Text Leaderboard 与 Agent Arena 2026年10月26日至2026年11月25日 Top 10 最新排名 30天变化']
+2026-11-25 23:03:17.981 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'LMArena Text Leaderboard 与 Agent Arena 是否同一榜单 主办方 网址 评测任务 评分机制 数据来源 对比 2026' 未命中，将通过MCP搜索
+2026-11-25 23:03:17.985 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'LMArena Text Leaderboard 与 Agent Arena 2026年10月26日至2026年11月25日 Top 10 最新排名 30天变化' 未命中，将通过MCP搜索
+2026-11-25 23:03:17.985 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.079 秒
+2026-11-25 23:03:18.074 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.079秒
+2026-11-25 23:03:20.285 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'LMArena Text Leaderboard 与 Agent Arena 是否同一榜单 主办方 网址 评测任务 评分机制 数据来源 对比 2026' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:03:20.286 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:03:20.287 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'LMArena Text Leaderboard 与 Agent Arena 2026年10月26日至2026年11月25日 Top 10 最新排名 30天变化' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:03:20.287 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:03:20.290 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:03:20.290 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:03:39.890 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'LMArena Text Leaderboard 与 Agent Arena 是否同一榜单 主办方 网址 评测任务 评分机制 数据来源 对比 2026'
+2026-11-25 23:03:39.891 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:03:55.137 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'LMArena Text Leaderboard 与 Agent Arena 2026年10月26日至2026年11月25日 Top 10 最新排名 30天变化'
+2026-11-25 23:03:55.140 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:04:36.017 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1770 chars)
+2026-11-25 23:04:36.017 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:04:36.411 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:05:36.487 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2393 chars)
+2026-11-25 23:05:36.487 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:05:37.106 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:05:37.106 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 23:05:37.108 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:06:05.787 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息已确认LMArena文本榜与Agent Arena不是同一张榜，且六维对照框架的关键维度已基本覆盖；但距离完整研报仍缺少：Agent Arena截至20...'
+2026-11-25 23:06:05.788 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-25 23:06:06.004 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Agent Arena 官方榜单 2026年11月19日至11月25日 完整 Top 10：Net Improvement 分数、排名变化、较30天前（2026' 未命中，将通过MCP搜索
+2026-11-25 23:06:06.004 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'LMArena Text Leaderboard 官方 2026年11月22日至11月25日 完整 Top 10 Elo 排名与模型列表，确认 Gemini 4' 未命中，将通过MCP搜索
+2026-11-25 23:06:06.004 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-25 23:06:06.096 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-25 23:06:07.867 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'LMArena Text Leaderboard 官方 2026年11月22日至11月25日 完整 Top 10 Elo 排名与模型列表，确认 Gemini 4' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:06:07.868 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:06:07.871 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:06:08.668 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Agent Arena 官方榜单 2026年11月19日至11月25日 完整 Top 10：Net Improvement 分数、排名变化、较30天前（2026' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:06:08.669 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:06:08.672 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:06:20.832 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'LMArena Text Leaderboard 官方 2026年11月22日至11月25日 完整 Top 10 Elo 排名与模型列表，确认 Gemini 4 Carbon/Argon/Neon、Claude Opus/Fable 及 Muse Wonder 的第6-10名'
+2026-11-25 23:06:20.835 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:06:27.135 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'Agent Arena 官方榜单 2026年11月19日至11月25日 完整 Top 10：Net Improvement 分数、排名变化、较30天前（2026-10-26前后）对比'
+2026-11-25 23:06:27.137 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:07:13.995 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1055 chars)
+2026-11-25 23:07:13.995 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:07:14.530 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:08:22.091 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2128 chars)
+2026-11-25 23:08:22.091 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:08:22.630 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:08:22.631 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 23:08:22.633 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:08:56.484 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息已足以判断LMArena文本榜与Agent Arena不是同一张榜，并可完成六维对照表的主体内容；但不足以完成“两榜最近30天Top 10排名/变化表”...'
+2026-11-25 23:08:56.485 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-25 23:08:56.488 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-25 23:09:16.550 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (3514 chars)
+2026-11-25 23:09:16.551 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:09:16.551 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-25 23:09:50.863 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (12022 chars)
+2026-11-25 23:09:50.864 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:11:18.026 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=4.5/10, issues=12 (critical=1, major=5, minor=6), ready_for_polish=False
+2026-11-25 23:11:18.027 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=4.5/10) → draft
+2026-11-25 23:11:18.028 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:11:18.028 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-25 23:12:33.396 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (15896 chars)
+2026-11-25 23:12:33.396 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:13:39.678 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=5.5/10, issues=7 (critical=0, major=4, minor=3), ready_for_polish=False
+2026-11-25 23:13:39.679 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=1/3, score=5.5/10) → draft
+2026-11-25 23:13:39.680 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:13:39.680 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 2)
+2026-11-25 23:14:38.024 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (13902 chars)
+2026-11-25 23:14:38.024 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:16:12.234 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.0/10, issues=8 (critical=0, major=4, minor=4), ready_for_polish=False
+2026-11-25 23:16:12.235 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:215 - [WriterAgent] qualified exit (score=6.0/10 >= 6.0, revision=2) → polish
+2026-11-25 23:16:12.236 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-25 23:17:39.331 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (17068 chars), 18 sources cited, 2 revision(s)
+2026-11-25 23:17:39.334 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-25 23:17:39.337 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=4.2 loops=2 tool_calls=0 cache_hit=0 err=None
+
+--- [baseline] 4/5 Artificial Analysis 现在智能指数第一是谁，开源最高是谁？关注 v5.0.2 最近30天数据。 ---
+2026-11-25 23:19:33.057 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (2369 字)
+2026-11-25 23:19:33.058 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-25 23:19:33.061 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-25 23:19:33.062 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+Task exception was never retrieved
+future: <Task finished name='Task-245' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+Task exception was never retrieved
+future: <Task finished name='Task-246' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+Task exception was never retrieved
+future: <Task finished name='Task-247' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+2026-11-25 23:19:33.066 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:19:33.613 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: Artificial Analysis 现在智能指数第一是谁，开源最高是谁？关注 v5.0.2 最近30天数...' → 20 hits (top score=0.520)
+2026-11-25 23:19:33.613 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-25 23:19:33.613 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-25 23:19:33.617 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:19:37.115 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['Artificial Analysis Intelligence Index v5.0.2 leaderboard as of 2026-11-25 top overall model and 30-day ranking changes site:artificialanalysis.ai', 'Artificial Analysis Intelligence Index v5.0.2 highest open-source model November 2026 open weights license Hugging Face GitHub 30-day changes']
+2026-11-25 23:19:37.229 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis Intelligence Index v5.0.2 highest open-source model November' 未命中，将通过MCP搜索
+2026-11-25 23:19:37.230 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis Intelligence Index v5.0.2 leaderboard as of 2026-11-25 top o' 未命中，将通过MCP搜索
+2026-11-25 23:19:37.230 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-25 23:19:37.317 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-25 23:19:38.604 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Artificial Analysis Intelligence Index v5.0.2 highest open-source model November' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:19:38.604 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:19:38.606 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:19:38.639 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Artificial Analysis Intelligence Index v5.0.2 leaderboard as of 2026-11-25 top o' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:19:38.639 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:19:38.641 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:19:52.072 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'Artificial Analysis Intelligence Index v5.0.2 leaderboard as of 2026-11-25 top overall model and 30-day ranking changes site:artificialanalysis.ai'
+2026-11-25 23:19:52.075 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:19:52.785 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'Artificial Analysis Intelligence Index v5.0.2 highest open-source model November 2026 open weights license Hugging Face GitHub 30-day changes'
+2026-11-25 23:19:52.787 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:22:01.303 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1286 chars)
+2026-11-25 23:22:01.303 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:22:01.838 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:22:04.354 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1618 chars)
+2026-11-25 23:22:04.354 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:22:04.871 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:22:04.873 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 23:22:04.875 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:22:23.237 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前网络采集信息不足，存在关键缺口：1）未获取 Artificial Analysis 官方 v5.0.2 原始榜单页面或快照，目前总榜第一存在 Claude ...'
+2026-11-25 23:22:23.238 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-25 23:22:23.256 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis Intelligence Index v5.0.2 official leaderboard snapshot Nove' 未命中，将通过MCP搜索
+2026-11-25 23:22:23.258 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis v5.0.2 open-weight highest open model DeepSeek V4.1 Flash GL' 未命中，将通过MCP搜索
+2026-11-25 23:22:23.258 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.081 秒
+2026-11-25 23:22:23.342 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.081秒
+2026-11-25 23:22:24.645 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Artificial Analysis v5.0.2 open-weight highest open model DeepSeek V4.1 Flash GL' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:22:24.645 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:22:24.646 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Artificial Analysis Intelligence Index v5.0.2 official leaderboard snapshot Nove' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:22:24.646 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:22:24.648 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:22:24.649 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:22:37.555 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'Artificial Analysis v5.0.2 open-weight highest open model DeepSeek V4.1 Flash GLM-5.3 Kimi K3.1 Pro license Hugging Face GitHub November 2026'
+2026-11-25 23:22:37.558 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:22:39.802 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'Artificial Analysis Intelligence Index v5.0.2 official leaderboard snapshot November 25 2026 Claude Fable 5.2 GPT-6.2 Astra ranking archive'
+2026-11-25 23:22:39.804 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:24:08.078 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1342 chars)
+2026-11-25 23:24:08.078 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:24:08.721 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:24:32.645 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (934 chars)
+2026-11-25 23:24:32.646 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:24:33.284 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:24:33.287 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 23:24:33.289 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:24:58.476 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息不足以唯一确认 Artificial Analysis Intelligence Index v5.0.2 的总榜第一与开源最高模型。主要缺口包括：1）...'
+2026-11-25 23:24:58.477 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-25 23:24:58.480 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-25 23:25:08.407 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (1543 chars)
+2026-11-25 23:25:08.408 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:25:08.408 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-25 23:25:49.445 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (15553 chars)
+2026-11-25 23:25:49.446 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:26:39.793 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=4.0/10, issues=8 (critical=1, major=5, minor=2), ready_for_polish=False
+2026-11-25 23:26:39.793 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=4.0/10) → draft
+2026-11-25 23:26:39.794 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:26:39.794 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-25 23:27:29.238 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (11936 chars)
+2026-11-25 23:27:29.240 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:28:23.514 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=4.5/10, issues=7 (critical=1, major=4, minor=2), ready_for_polish=False
+2026-11-25 23:28:23.515 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=1/3, score=4.5/10) → draft
+2026-11-25 23:28:23.516 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:28:23.516 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 2)
+2026-11-25 23:29:46.626 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (14430 chars)
+2026-11-25 23:29:46.628 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:30:36.790 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=5.5/10, issues=7 (critical=0, major=4, minor=3), ready_for_polish=False
+2026-11-25 23:30:36.791 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=2/3, score=5.5/10) → draft
+2026-11-25 23:30:36.792 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:30:36.792 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 3)
+2026-11-25 23:32:29.397 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (16767 chars)
+2026-11-25 23:32:29.398 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:33:24.553 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=5.5/10, issues=8 (critical=0, major=5, minor=3), ready_for_polish=False
+2026-11-25 23:33:24.554 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:223 - [WriterAgent] max revisions reached (3/3, score=5.5/10) → polish
+2026-11-25 23:33:24.555 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-25 23:35:01.642 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (16197 chars), 0 sources cited, 3 revision(s)
+2026-11-25 23:35:01.645 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-25 23:35:01.647 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=4.2 loops=2 tool_calls=0 cache_hit=0 err=None
+
+--- [baseline] 5/5 2026年11月1日到25日这波大模型发布与榜单变化，按时间排清楚。 ---
+2026-11-25 23:37:01.201 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (3171 字)
+2026-11-25 23:37:01.201 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-25 23:37:01.204 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-25 23:37:01.204 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+Task exception was never retrieved
+future: <Task finished name='Task-335' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+2026-11-25 23:37:01.207 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:37:01.758 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: 2026年11月1日到25日这波大模型发布与榜单变化，按时间排清楚。
+Assistant: # 需求清晰度进...' → 20 hits (top score=0.418)
+2026-11-25 23:37:01.758 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-25 23:37:01.758 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-25 23:37:01.760 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:37:05.709 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['2026年11月1日到25日 大模型发布 时间线 OpenAI Anthropic Google DeepMind Meta xAI Mistral DeepSeek Qwen 豆包 月之暗面 智谱 MiniMax 开源权重 API', '2026年11月 LMArena Artificial Analysis OpenRouter Hugging Face 榜单变化 GPT Gemini Claude DeepSeek Qwen 排名 评测']
+2026-11-25 23:37:05.729 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日到25日 大模型发布 时间线 OpenAI Anthropic Google DeepMind Meta xAI Mistral DeepS' 未命中，将通过MCP搜索
+2026-11-25 23:37:05.730 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月 LMArena Artificial Analysis OpenRouter Hugging Face 榜单变化 GPT Gemini Cla' 未命中，将通过MCP搜索
+2026-11-25 23:37:05.730 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-25 23:37:05.820 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-25 23:37:07.752 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月1日到25日 大模型发布 时间线 OpenAI Anthropic Google DeepMind Meta xAI Mistral DeepS' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:37:07.753 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:37:07.755 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:37:08.260 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月 LMArena Artificial Analysis OpenRouter Hugging Face 榜单变化 GPT Gemini Cla' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:37:08.260 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:37:08.261 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:37:45.122 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： '2026年11月 LMArena Artificial Analysis OpenRouter Hugging Face 榜单变化 GPT Gemini Claude DeepSeek Qwen 排名 评测'
+2026-11-25 23:37:45.125 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:38:18.010 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： '2026年11月1日到25日 大模型发布 时间线 OpenAI Anthropic Google DeepMind Meta xAI Mistral DeepSeek Qwen 豆包 月之暗面 智谱 MiniMax 开源权重 API'
+2026-11-25 23:38:18.012 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:40:25.200 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (5361 chars)
+2026-11-25 23:40:25.200 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:40:26.124 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:40:26.125 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 23:40:26.127 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:40:51.288 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息已覆盖11月1-25日发布事件主线、主要厂商快照和部分榜单变化，但尚不足以直接撰写严谨研报。主要缺口包括：1）时间线关键事件日期粒度不均，11月1-3日...'
+2026-11-25 23:40:51.289 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-25 23:40:51.313 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日至11月25日 LMArena Artificial Analysis OpenRouter Hugging Face SWE-bench ' 未命中，将通过MCP搜索
+2026-11-25 23:40:51.315 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日至11月25日 大模型发布 逐日时间线 核验：补充11月1-3日、6-9日、13-16日、20-22日等缺失或模糊日期事件，重点核验 Ope' 未命中，将通过MCP搜索
+2026-11-25 23:40:51.315 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.081 秒
+2026-11-25 23:40:51.397 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.081秒
+2026-11-25 23:40:53.302 +08:00 | WARNING  | agent.base_agent:_pages_from_plain_text:542 - [WebSearch] MCP 返回非 JSON 文本，降级为单页结果 (len=162)
+2026-11-25 23:40:53.312 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月1日至11月25日 LMArena Artificial Analysis OpenRouter Hugging Face SWE-bench ' （1 items, TTL=3600s）→ Redis
+2026-11-25 23:40:53.312 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:40:53.315 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:40:53.492 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月1日至11月25日 大模型发布 逐日时间线 核验：补充11月1-3日、6-9日、13-16日、20-22日等缺失或模糊日期事件，重点核验 Ope' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:40:53.493 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:40:53.495 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:40:57.022 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： '2026年11月1日至11月25日 LMArena Artificial Analysis OpenRouter Hugging Face SWE-bench GPQA MMLU-Pro AIME SuperCLUE 榜单变化：逐日或逐周排名、得分、份额数据，特别是Hugging Face趋势/下载榜和学术基准时间线，用于构建榜单变化对比表'
+2026-11-25 23:40:57.025 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:41:19.451 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： '2026年11月1日至11月25日 大模型发布 逐日时间线 核验：补充11月1-3日、6-9日、13-16日、20-22日等缺失或模糊日期事件，重点核验 OpenAI GPT-6.2 Astra/Sol 是否发布、阿里 Qwen4 正式版是否上线、百度 ERNIE 5.5 Flash 权重是否在11月25日开源、腾讯混元Hy4开源时间、Anthropic Claude Sonnet 4.5退役日期等冲突口径，来源包括官方博客、API文档、模型卡、科技媒体'
+2026-11-25 23:41:19.454 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:41:53.364 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 5 facts from summary (283 chars)
+2026-11-25 23:41:53.365 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 5 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:41:54.026 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 5 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:43:01.237 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2727 chars)
+2026-11-25 23:43:01.237 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:43:01.803 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:43:01.804 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 23:43:01.806 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:43:33.500 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息距离撰写研报仍存在关键缺口：1）时间线不完整，11月1-3日、6-8日、14日、20日、22日、23-24日等日期缺少可核验事件，且腾讯混元Hy4、百度...'
+2026-11-25 23:43:33.501 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-25 23:43:33.502 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-25 23:43:50.555 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (2598 chars)
+2026-11-25 23:43:50.556 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:43:50.556 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-25 23:44:57.143 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (24002 chars)
+2026-11-25 23:44:57.144 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:46:02.563 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=5.5/10, issues=12 (critical=0, major=9, minor=3), ready_for_polish=False
+2026-11-25 23:46:02.564 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=5.5/10) → draft
+2026-11-25 23:46:02.565 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:46:02.565 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-25 23:47:47.937 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (24284 chars)
+2026-11-25 23:47:47.938 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:48:38.408 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.0/10, issues=7 (critical=0, major=2, minor=5), ready_for_polish=False
+2026-11-25 23:48:38.409 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:215 - [WriterAgent] qualified exit (score=6.0/10 >= 6.0, revision=1) → polish
+2026-11-25 23:48:38.410 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-25 23:49:49.290 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (27104 chars), 24 sources cited, 1 revision(s)
+2026-11-25 23:49:49.292 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-25 23:49:49.294 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=4.4 loops=2 tool_calls=0 cache_hit=0 err=None
+2026-11-25 23:50:44.276 +08:00 | INFO     | agent.search_cache:clear_cache:190 - [Cache] cleared all 14 entries (Redis)
+2026-11-25 23:50:44.277 +08:00 | INFO     | eval.judge:__init__:165 - Judge 已初始化，模型=deepseek-v4-pro
+
+============================================================
+  MVP treatment: enabled=True, topics=5, judge=deepseek-v4-pro
+============================================================
+
+--- [treatment] 1/5 ToolSmith 是什么，四阶段怎么跑，效果到底多大？ ---
+2026-11-25 23:51:00.994 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (3252 字)
+2026-11-25 23:51:00.995 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-25 23:51:00.997 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-25 23:51:00.998 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+2026-11-25 23:51:00.999 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:51:01.619 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: ToolSmith 是什么，四阶段怎么跑，效果到底多大？
+Assistant: ```markdown
+# ...' → 20 hits (top score=0.402)
+2026-11-25 23:51:01.619 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-25 23:51:01.619 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-25 23:51:01.622 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:51:08.770 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['ToolSmith arXiv 2611.31198 four-stage pipeline trajectory mining reuse-or-grow tool generation validation inference benchmark results 2026', 'ToolSmith disambiguation academic paper vs enterprise AAAI 2026 vs AI agent tool evaluation GitHub independent reproduction limitations cost']
+2026-11-25 23:51:08.772 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#1 fresh_level=medium window=30d query='ToolSmith arXiv 2611.31198 four-stage pipeline trajectory mining reuse-or-grow tool generation validation inference benchmark results 2026' timed_query='ToolSmith arXiv 2611.31198 four-stage pipeline trajectory mining reuse-or-grow tool generation validation inference benchmark results 2026 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-25 23:51:08.772 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#2 fresh_level=medium window=30d query='ToolSmith disambiguation academic paper vs enterprise AAAI 2026 vs AI agent tool evaluation GitHub independent reproduction limitations cost' timed_query='ToolSmith disambiguation academic paper vs enterprise AAAI 2026 vs AI agent tool evaluation GitHub independent reproduction limitations cost 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-25 23:51:08.870 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith arXiv 2611.31198 four-stage pipeline trajectory mining reuse-or-grow t' 未命中，将通过MCP搜索
+2026-11-25 23:51:08.870 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='ToolSmith arXiv 2611.31198 four-stage pipeline trajectory mining reuse-or-grow t'
+2026-11-25 23:51:08.877 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith disambiguation academic paper vs enterprise AAAI 2026 vs AI agent tool' 未命中，将通过MCP搜索
+2026-11-25 23:51:08.878 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='ToolSmith disambiguation academic paper vs enterprise AAAI 2026 vs AI agent tool'
+2026-11-25 23:51:08.878 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith arXiv 2611.31198 four-stage pipeline trajectory mining reuse-or-grow t' 未命中，将通过MCP搜索
+2026-11-25 23:51:08.887 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith disambiguation academic paper vs enterprise AAAI 2026 vs AI agent tool' 未命中，将通过MCP搜索
+2026-11-25 23:51:08.887 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.074 秒
+2026-11-25 23:51:08.964 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.074秒
+2026-11-25 23:51:10.098 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith arXiv 2611.31198 four-stage pipeline trajectory mining reuse-or-grow t' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:51:10.100 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:51:10.245 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith disambiguation academic paper vs enterprise AAAI 2026 vs AI agent tool' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:51:10.247 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:51:14.968 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:51:21.009 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 7 条事实，stats={'call_count': 2, 'cache_hit_count': 0, 'cache_miss_count': 2, 'fallback_count': 0}
+2026-11-25 23:51:21.010 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='ToolSmith arXiv 2611.31198 four-stage pipeline trajectory mining reuse-or-grow tool generation validation inference benchmark results 2026' fresh_level=medium facts=7
+2026-11-25 23:51:21.012 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:51:24.560 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:51:35.581 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 7 条事实，stats={'call_count': 2, 'cache_hit_count': 0, 'cache_miss_count': 2, 'fallback_count': 0}
+2026-11-25 23:51:35.581 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='ToolSmith disambiguation academic paper vs enterprise AAAI 2026 vs AI agent tool evaluation GitHub independent reproduction limitations cost' fresh_level=medium facts=7
+2026-11-25 23:51:35.584 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:52:13.671 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1088 chars)
+2026-11-25 23:52:13.672 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:52:14.256 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:52:16.819 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 7 facts from summary (996 chars)
+2026-11-25 23:52:16.819 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 7 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:52:17.161 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 7 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:52:17.163 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 23:52:17.166 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:52:36.664 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息已能确认 ToolSmith 是 AAAI 2026 提出的多智能体/自动工具生成框架，也确认了四阶段中 Phase 1 为 Trajectory Mi...'
+2026-11-25 23:52:36.665 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-25 23:52:36.666 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#3 fresh_level=medium window=30d query='ToolSmith 四阶段流程完整拆解：Phase 3 官方名称、输入/动作/输出、验证门禁规则、各阶段失败模式与阶段间依赖（arXiv:2611.31198 及 threesr.github.io/toolsmith 官方页面，2026年）' timed_query='ToolSmith 四阶段流程完整拆解：Phase 3 官方名称、输入/动作/输出、验证门禁规则、各阶段失败模式与阶段间依赖（arXiv:2611.31198 及 threesr.github.io/toolsmith 官方页面，2026年） 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-25 23:52:36.666 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#4 fresh_level=medium window=30d query='ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延/工程成本、失效条件与第三方复现或批评' timed_query='ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延/工程成本、失效条件与第三方复现或批评 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-25 23:52:36.836 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延' 未命中，将通过MCP搜索
+2026-11-25 23:52:36.836 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延'
+2026-11-25 23:52:36.838 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith 四阶段流程完整拆解：Phase 3 官方名称、输入/动作/输出、验证门禁规则、各阶段失败模式与阶段间依赖（arXiv:2611.31198 ' 未命中，将通过MCP搜索
+2026-11-25 23:52:36.838 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='ToolSmith 四阶段流程完整拆解：Phase 3 官方名称、输入/动作/输出、验证门禁规则、各阶段失败模式与阶段间依赖（arXiv:2611.31198 '
+2026-11-25 23:52:36.846 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延' 未命中，将通过MCP搜索
+2026-11-25 23:52:36.850 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith 四阶段流程完整拆解：Phase 3 官方名称、输入/动作/输出、验证门禁规则、各阶段失败模式与阶段间依赖（arXiv:2611.31198 ' 未命中，将通过MCP搜索
+2026-11-25 23:52:36.850 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.079 秒
+2026-11-25 23:52:36.939 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.079秒
+2026-11-25 23:52:38.600 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:52:38.602 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:52:38.864 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith 四阶段流程完整拆解：Phase 3 官方名称、输入/动作/输出、验证门禁规则、各阶段失败模式与阶段间依赖（arXiv:2611.31198 ' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:52:38.868 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:52:44.912 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:52:46.947 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:52:54.568 +08:00 | WARNING  | agent.tools.generated_tools:time_aware_search:272 - [time_aware_search] 未抽出有效事实，回退原因=empty_facts
+2026-11-25 23:52:54.568 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:249 - [ResearchAgent] time_aware_search 无结果，回退原搜索：query='ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延/工程成本、失效条件与第三方复现或批评'
+2026-11-25 23:52:54.576 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延' 未命中，将通过MCP搜索
+2026-11-25 23:52:57.024 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延' （10 items, TTL=3600s）→ Redis
+2026-11-25 23:52:57.025 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 23:52:57.028 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 23:53:03.676 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 6 条事实，stats={'call_count': 4, 'cache_hit_count': 0, 'cache_miss_count': 4, 'fallback_count': 1}
+2026-11-25 23:53:03.676 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='ToolSmith 四阶段流程完整拆解：Phase 3 官方名称、输入/动作/输出、验证门禁规则、各阶段失败模式与阶段间依赖（arXiv:2611.31198 及 threesr.github.io/toolsmith 官方页面，2026年）' fresh_level=medium facts=6
+2026-11-25 23:53:03.678 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:53:16.869 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith AAAI 2026 实证效果与代价：3个域内多模态搜索基准和10个域外基准的具体指标、相对八原语基础库的提升幅度、消融实验、token/时延/工程成本、失效条件与第三方复现或批评'
+2026-11-25 23:53:16.871 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:53:56.203 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 7 facts from summary (1126 chars)
+2026-11-25 23:53:56.203 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 7 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:53:57.581 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 7 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:54:47.814 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1660 chars)
+2026-11-25 23:54:47.814 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 23:54:48.935 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 23:54:48.937 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 23:54:48.940 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 23:55:21.191 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息不足以撰写完整研报：1) 四阶段机制不完整——只确认 Phase 1 Trajectory Mining、Phase 2 Reuse-or-Grow D...'
+2026-11-25 23:55:21.192 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-25 23:55:21.195 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-25 23:55:45.004 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (2562 chars)
+2026-11-25 23:55:45.005 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:55:45.005 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-25 23:56:24.281 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (9209 chars)
+2026-11-25 23:56:24.282 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:57:32.218 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.0/10, issues=7 (critical=0, major=2, minor=5), ready_for_polish=False
+2026-11-25 23:57:32.219 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=6.0/10) → draft
+2026-11-25 23:57:32.220 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:57:32.220 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-25 23:58:44.662 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (3958 chars)
+2026-11-25 23:58:44.663 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 23:59:16.409 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=3.5/10, issues=6 (critical=1, major=3, minor=2), ready_for_polish=False
+2026-11-25 23:59:16.410 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=1/3, score=3.5/10) → draft
+2026-11-25 23:59:16.411 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 23:59:16.411 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 2)
+2026-11-25 23:59:58.434 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (4287 chars)
+2026-11-25 23:59:58.435 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:00:23.522 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=3.5/10, issues=6 (critical=3, major=1, minor=2), ready_for_polish=False
+2026-11-26 00:00:23.523 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=2/3, score=3.5/10) → draft
+2026-11-26 00:00:23.523 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-26 00:00:23.523 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 3)
+2026-11-26 00:02:41.519 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (3903 chars)
+2026-11-26 00:02:41.520 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:03:05.141 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=3.0/10, issues=6 (critical=1, major=3, minor=2), ready_for_polish=False
+2026-11-26 00:03:05.141 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:223 - [WriterAgent] max revisions reached (3/3, score=3.0/10) → polish
+2026-11-26 00:03:05.142 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-26 00:03:49.984 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (7520 chars), 0 sources cited, 3 revision(s)
+2026-11-26 00:03:49.987 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-26 00:03:49.989 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=4.6 loops=2 tool_calls=4 cache_hit=0 err=None
+
+--- [treatment] 2/5 OpenAI 公开了什么，又提议了什么？关注最近一周尤其是11月20日到25日的动态。 ---
+2026-11-26 00:05:53.796 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (2970 字)
+2026-11-26 00:05:53.797 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-26 00:05:53.799 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-26 00:05:53.800 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+Task exception was never retrieved
+future: <Task finished name='Task-495' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+2026-11-26 00:05:53.802 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:05:54.385 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: OpenAI 公开了什么，又提议了什么？关注最近一周尤其是11月20日到25日的动态。
+Assistant:...' → 20 hits (top score=0.466)
+2026-11-26 00:05:54.385 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-26 00:05:54.385 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-26 00:05:54.387 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:05:59.668 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['OpenAI announcements November 20-25 2026 official blog product API research partnership executive statements', 'OpenAI proposals policy regulation safety governance framework industry standards November 2026']
+2026-11-26 00:05:59.669 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#5 fresh_level=medium window=30d query='OpenAI announcements November 20-25 2026 official blog product API research partnership executive statements' timed_query='OpenAI announcements November 20-25 2026 official blog product API research partnership executive statements 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:05:59.670 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#6 fresh_level=medium window=30d query='OpenAI proposals policy regulation safety governance framework industry standards November 2026' timed_query='OpenAI proposals policy regulation safety governance framework industry standards November 2026 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:05:59.767 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'OpenAI announcements November 20-25 2026 official blog product API research part' 未命中，将通过MCP搜索
+2026-11-26 00:05:59.767 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='OpenAI announcements November 20-25 2026 official blog product API research part'
+2026-11-26 00:05:59.767 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'OpenAI proposals policy regulation safety governance framework industry standard' 未命中，将通过MCP搜索
+2026-11-26 00:05:59.767 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='OpenAI proposals policy regulation safety governance framework industry standard'
+2026-11-26 00:05:59.773 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'OpenAI announcements November 20-25 2026 official blog product API research part' 未命中，将通过MCP搜索
+2026-11-26 00:05:59.775 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'OpenAI proposals policy regulation safety governance framework industry standard' 未命中，将通过MCP搜索
+2026-11-26 00:05:59.775 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.081 秒
+2026-11-26 00:05:59.860 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.081秒
+2026-11-26 00:06:01.194 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'OpenAI proposals policy regulation safety governance framework industry standard' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:06:01.196 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:06:01.210 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'OpenAI announcements November 20-25 2026 official blog product API research part' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:06:01.212 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:06:06.264 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:06:06.459 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:06:12.536 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 5 条事实，stats={'call_count': 6, 'cache_hit_count': 0, 'cache_miss_count': 6, 'fallback_count': 1}
+2026-11-26 00:06:12.536 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='OpenAI proposals policy regulation safety governance framework industry standards November 2026' fresh_level=medium facts=5
+2026-11-26 00:06:12.538 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:06:12.843 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 7 条事实，stats={'call_count': 6, 'cache_hit_count': 0, 'cache_miss_count': 6, 'fallback_count': 1}
+2026-11-26 00:06:12.843 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='OpenAI announcements November 20-25 2026 official blog product API research partnership executive statements' fresh_level=medium facts=7
+2026-11-26 00:06:12.844 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:06:51.573 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 6 facts from summary (848 chars)
+2026-11-26 00:06:51.573 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 6 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:06:51.967 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 6 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:07:51.695 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1010 chars)
+2026-11-26 00:07:51.695 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:07:52.211 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:07:52.212 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-26 00:07:52.214 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:08:16.032 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前网络采集的信息仅覆盖了2026年11月20日的少数事件，包括GPT-Live-1.1 API开放、OpenAI使用政策更新，以及签署儿童安全宪章并承诺200...'
+2026-11-26 00:08:16.032 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-26 00:08:16.033 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#7 fresh_level=medium window=30d query='2026年11月20日至25日 OpenAI 官方公告、政策提案与安全治理倡议，包括GPT-Live-1.1 API发布、使用政策更新、儿童安全宪章、高管表态和监管建议' timed_query='2026年11月20日至25日 OpenAI 官方公告、政策提案与安全治理倡议，包括GPT-Live-1.1 API发布、使用政策更新、儿童安全宪章、高管表态和监管建议 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:08:16.033 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#8 fresh_level=medium window=30d query='2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1.1 API和使用政策更新的反应' timed_query='2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1.1 API和使用政策更新的反应 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:08:16.051 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月20日至25日 OpenAI 官方公告、政策提案与安全治理倡议，包括GPT-Live-1.1 API发布、使用政策更新、儿童安全宪章、高管表态和' 未命中，将通过MCP搜索
+2026-11-26 00:08:16.051 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='2026年11月20日至25日 OpenAI 官方公告、政策提案与安全治理倡议，包括GPT-Live-1.1 API发布、使用政策更新、儿童安全宪章、高管表态和'
+2026-11-26 00:08:16.051 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1' 未命中，将通过MCP搜索
+2026-11-26 00:08:16.051 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1'
+2026-11-26 00:08:16.058 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1' 未命中，将通过MCP搜索
+2026-11-26 00:08:16.058 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月20日至25日 OpenAI 官方公告、政策提案与安全治理倡议，包括GPT-Live-1.1 API发布、使用政策更新、儿童安全宪章、高管表态和' 未命中，将通过MCP搜索
+2026-11-26 00:08:16.058 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-26 00:08:16.143 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-26 00:08:17.704 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月20日至25日 OpenAI 官方公告、政策提案与安全治理倡议，包括GPT-Live-1.1 API发布、使用政策更新、儿童安全宪章、高管表态和' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:08:17.706 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:08:17.843 +08:00 | WARNING  | agent.base_agent:_pages_from_plain_text:542 - [WebSearch] MCP 返回非 JSON 文本，降级为单页结果 (len=162)
+2026-11-26 00:08:17.851 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1' （1 items, TTL=3600s）→ Redis
+2026-11-26 00:08:17.851 +08:00 | WARNING  | agent.tools.generated_tools:time_aware_search:219 - [time_aware_search] 无真实来源页面，回退原因=no_real_pages
+2026-11-26 00:08:17.852 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:249 - [ResearchAgent] time_aware_search 无结果，回退原搜索：query='2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1.1 API和使用政策更新的反应'
+2026-11-26 00:08:17.860 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1' 未命中，将通过MCP搜索
+2026-11-26 00:08:20.137 +08:00 | WARNING  | agent.base_agent:_pages_from_plain_text:542 - [WebSearch] MCP 返回非 JSON 文本，降级为单页结果 (len=162)
+2026-11-26 00:08:20.146 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1' （1 items, TTL=3600s）→ Redis
+2026-11-26 00:08:20.146 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-26 00:08:20.149 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:08:22.758 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： '2026年11月20日至25日 开发者社区、竞争对手 Anthropic Google Meta xAI、监管机构与资本市场对OpenAI GPT-Live-1.1 API和使用政策更新的反应'
+2026-11-26 00:08:22.761 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:08:24.148 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:08:34.667 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 1 facts from summary (244 chars)
+2026-11-26 00:08:34.667 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:08:34.998 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 1 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:08:43.059 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 10 条事实，stats={'call_count': 8, 'cache_hit_count': 0, 'cache_miss_count': 8, 'fallback_count': 2}
+2026-11-26 00:08:43.060 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='2026年11月20日至25日 OpenAI 官方公告、政策提案与安全治理倡议，包括GPT-Live-1.1 API发布、使用政策更新、儿童安全宪章、高管表态和监管建议' fresh_level=medium facts=10
+2026-11-26 00:08:43.062 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:09:43.465 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1332 chars)
+2026-11-26 00:09:43.465 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:09:43.973 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:09:43.974 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-26 00:09:43.976 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:10:09.250 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息已覆盖OpenAI在2026年11月20日左右的两项主要动态：GPT-Live-1.1 API开放及《使用政策》更新，并提及儿童安全宪章与200万美元承...'
+2026-11-26 00:10:09.252 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-26 00:10:09.255 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-26 00:10:23.346 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (2498 chars)
+2026-11-26 00:10:23.347 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-26 00:10:23.347 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-26 00:11:09.924 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (11823 chars)
+2026-11-26 00:11:09.926 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:12:10.629 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.0/10, issues=7 (critical=0, major=2, minor=5), ready_for_polish=False
+2026-11-26 00:12:10.630 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=6.0/10) → draft
+2026-11-26 00:12:10.631 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-26 00:12:10.631 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-26 00:12:39.801 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (4887 chars)
+2026-11-26 00:12:39.802 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:13:33.768 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.5/10, issues=6 (critical=0, major=1, minor=5), ready_for_polish=True
+2026-11-26 00:13:33.769 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:201 - [WriterAgent] Critic ready_for_polish (score=6.5/10) → polish
+2026-11-26 00:13:33.770 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-26 00:14:05.750 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (5276 chars), 1 sources cited, 1 revision(s)
+2026-11-26 00:14:05.752 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-26 00:14:05.753 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=4.4 loops=2 tool_calls=4 cache_hit=0 err=None
+
+--- [treatment] 3/5 LMArena 文本榜和 Agent Arena 到底是不是同一张榜？最近30天的排名分别是什么？ ---
+Task exception was never retrieved
+future: <Task finished name='Task-548' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+Task exception was never retrieved
+future: <Task finished name='Task-549' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+Task exception was never retrieved
+future: <Task finished name='Task-550' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+Task exception was never retrieved
+future: <Task finished name='Task-551' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+Task exception was never retrieved
+future: <Task finished name='Task-552' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+Task exception was never retrieved
+future: <Task finished name='Task-553' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+2026-11-26 00:15:35.102 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (2378 字)
+2026-11-26 00:15:35.103 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-26 00:15:35.106 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-26 00:15:35.107 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+2026-11-26 00:15:35.109 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:15:35.637 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: LMArena 文本榜和 Agent Arena 到底是不是同一张榜？最近30天的排名分别是什么？
+Assi...' → 20 hits (top score=0.272)
+2026-11-26 00:15:35.637 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-26 00:15:35.637 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-26 00:15:35.640 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:15:40.109 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['LMArena Text Leaderboard 与 Agent Arena 关系 官方入口 评测方法 更新机制 2026年11月', 'LMArena 文本榜 Agent Arena 最近30天排名 2026-10-28 至 2026-11-26 Top20 快照']
+2026-11-26 00:15:40.111 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#9 fresh_level=medium window=30d query='LMArena Text Leaderboard 与 Agent Arena 关系 官方入口 评测方法 更新机制 2026年11月' timed_query='LMArena Text Leaderboard 与 Agent Arena 关系 官方入口 评测方法 更新机制 2026年11月 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:15:40.111 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#10 fresh_level=medium window=30d query='LMArena 文本榜 Agent Arena 最近30天排名 2026-10-28 至 2026-11-26 Top20 快照' timed_query='LMArena 文本榜 Agent Arena 最近30天排名 2026-10-28 至 2026-11-26 Top20 快照 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:15:40.369 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'LMArena Text Leaderboard 与 Agent Arena 关系 官方入口 评测方法 更新机制 2026年11月 最近30天 2026年11月' 未命中，将通过MCP搜索
+2026-11-26 00:15:40.370 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='LMArena Text Leaderboard 与 Agent Arena 关系 官方入口 评测方法 更新机制 2026年11月 最近30天 2026年11月'
+2026-11-26 00:15:40.397 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'LMArena Text Leaderboard 与 Agent Arena 关系 官方入口 评测方法 更新机制 2026年11月 最近30天 2026年11月' 未命中，将通过MCP搜索
+2026-11-26 00:15:40.567 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'LMArena 文本榜 Agent Arena 最近30天排名 2026-10-28 至 2026-11-26 Top20 快照 最近30天 2026年11月 ' 未命中，将通过MCP搜索
+2026-11-26 00:15:40.567 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='LMArena 文本榜 Agent Arena 最近30天排名 2026-10-28 至 2026-11-26 Top20 快照 最近30天 2026年11月 '
+2026-11-26 00:15:40.575 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'LMArena 文本榜 Agent Arena 最近30天排名 2026-10-28 至 2026-11-26 Top20 快照 最近30天 2026年11月 ' 未命中，将通过MCP搜索
+2026-11-26 00:15:42.257 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'LMArena Text Leaderboard 与 Agent Arena 关系 官方入口 评测方法 更新机制 2026年11月 最近30天 2026年11月' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:15:42.260 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:15:42.345 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'LMArena 文本榜 Agent Arena 最近30天排名 2026-10-28 至 2026-11-26 Top20 快照 最近30天 2026年11月 ' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:15:42.348 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:15:51.279 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:16:02.692 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:16:03.417 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 11 条事实，stats={'call_count': 10, 'cache_hit_count': 0, 'cache_miss_count': 10, 'fallback_count': 2}
+2026-11-26 00:16:03.418 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='LMArena 文本榜 Agent Arena 最近30天排名 2026-10-28 至 2026-11-26 Top20 快照' fresh_level=medium facts=11
+2026-11-26 00:16:03.419 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:16:23.864 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 13 条事实，stats={'call_count': 10, 'cache_hit_count': 0, 'cache_miss_count': 10, 'fallback_count': 2}
+2026-11-26 00:16:23.864 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='LMArena Text Leaderboard 与 Agent Arena 关系 官方入口 评测方法 更新机制 2026年11月' fresh_level=medium facts=13
+2026-11-26 00:16:23.866 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:17:48.943 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2151 chars)
+2026-11-26 00:17:48.943 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:17:49.488 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:18:09.862 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1870 chars)
+2026-11-26 00:18:09.862 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:18:10.449 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:18:10.450 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-26 00:18:10.452 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:18:44.471 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息不足以撰写研报：①同一性判定缺乏官方/权威信源对 LMArena 文本榜与 Agent Arena 在平台入口、评测体系、数据系统、更新周期是否同一的直...'
+2026-11-26 00:18:44.472 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-26 00:18:44.473 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#11 fresh_level=medium window=30d query='LMArena 官方 Text Leaderboard 2026-10-28 至 2026-11-26 Top20 全量排名快照 包含模型名、得分、票数/置信区间、更新时间' timed_query='LMArena 官方 Text Leaderboard 2026-10-28 至 2026-11-26 Top20 全量排名快照 包含模型名、得分、票数/置信区间、更新时间 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:18:44.473 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#12 fresh_level=medium window=30d query='Agent Arena 官方 leaderboard 2026-11-22 或最新 Top20 全量排名（含 Claude Fable 5.2 Max 1449 等），以及 LMArena 文本榜与 Agent Arena 是否同一平台/同一评测体系/同一更新周期的官方说明' timed_query='Agent Arena 官方 leaderboard 2026-11-22 或最新 Top20 全量排名（含 Claude Fable 5.2 Max 1449 等），以及 LMArena 文本榜与 Agent Arena 是否同一平台/同一评测体系/同一更新周期的官方说明 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:18:44.593 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Agent Arena 官方 leaderboard 2026-11-22 或最新 Top20 全量排名（含 Claude Fable 5.2 Max 1449' 未命中，将通过MCP搜索
+2026-11-26 00:18:44.593 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='Agent Arena 官方 leaderboard 2026-11-22 或最新 Top20 全量排名（含 Claude Fable 5.2 Max 1449'
+2026-11-26 00:18:44.593 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'LMArena 官方 Text Leaderboard 2026-10-28 至 2026-11-26 Top20 全量排名快照 包含模型名、得分、票数/置信区' 未命中，将通过MCP搜索
+2026-11-26 00:18:44.593 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='LMArena 官方 Text Leaderboard 2026-10-28 至 2026-11-26 Top20 全量排名快照 包含模型名、得分、票数/置信区'
+2026-11-26 00:18:44.599 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Agent Arena 官方 leaderboard 2026-11-22 或最新 Top20 全量排名（含 Claude Fable 5.2 Max 1449' 未命中，将通过MCP搜索
+2026-11-26 00:18:44.602 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'LMArena 官方 Text Leaderboard 2026-10-28 至 2026-11-26 Top20 全量排名快照 包含模型名、得分、票数/置信区' 未命中，将通过MCP搜索
+2026-11-26 00:18:44.602 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.080 秒
+2026-11-26 00:18:44.688 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.080秒
+2026-11-26 00:18:46.019 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'LMArena 官方 Text Leaderboard 2026-10-28 至 2026-11-26 Top20 全量排名快照 包含模型名、得分、票数/置信区' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:18:46.021 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:18:46.541 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Agent Arena 官方 leaderboard 2026-11-22 或最新 Top20 全量排名（含 Claude Fable 5.2 Max 1449' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:18:46.543 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:18:51.462 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:18:55.905 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:18:57.811 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 5 条事实，stats={'call_count': 12, 'cache_hit_count': 0, 'cache_miss_count': 12, 'fallback_count': 2}
+2026-11-26 00:18:57.811 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='LMArena 官方 Text Leaderboard 2026-10-28 至 2026-11-26 Top20 全量排名快照 包含模型名、得分、票数/置信区间、更新时间' fresh_level=medium facts=5
+2026-11-26 00:18:57.815 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:19:08.275 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 8 条事实，stats={'call_count': 12, 'cache_hit_count': 0, 'cache_miss_count': 12, 'fallback_count': 2}
+2026-11-26 00:19:08.275 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='Agent Arena 官方 leaderboard 2026-11-22 或最新 Top20 全量排名（含 Claude Fable 5.2 Max 1449 等），以及 LMArena 文本榜与 Agent Arena 是否同一平台/同一评测体系/同一更新周期的官方说明' fresh_level=medium facts=8
+2026-11-26 00:19:08.278 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:19:31.231 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 8 facts from summary (721 chars)
+2026-11-26 00:19:31.231 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 8 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:19:31.915 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 8 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:20:26.408 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1220 chars)
+2026-11-26 00:20:26.408 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:20:26.925 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:20:26.927 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-26 00:20:26.929 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:21:05.651 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息已能初步判断LMArena文本榜与Agent Arena并非同一张总榜，但距离撰写完整研报仍存在关键缺口：1）同一性判定缺少官方一手证据，例如arena...'
+2026-11-26 00:21:05.652 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-26 00:21:05.653 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-26 00:21:25.993 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (2296 chars)
+2026-11-26 00:21:25.995 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-26 00:21:25.995 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-26 00:22:50.663 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (24318 chars)
+2026-11-26 00:22:50.664 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:24:50.922 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=4.5/10, issues=12 (critical=2, major=6, minor=4), ready_for_polish=False
+2026-11-26 00:24:50.923 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=4.5/10) → draft
+2026-11-26 00:24:50.924 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-26 00:24:50.924 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-26 00:26:24.993 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (17607 chars)
+2026-11-26 00:26:24.994 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:28:10.713 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.0/10, issues=8 (critical=1, major=3, minor=4), ready_for_polish=False
+2026-11-26 00:28:10.714 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:215 - [WriterAgent] qualified exit (score=6.0/10 >= 6.0, revision=1) → polish
+2026-11-26 00:28:10.714 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-26 00:29:36.592 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (19980 chars), 0 sources cited, 1 revision(s)
+2026-11-26 00:29:36.593 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-26 00:29:36.594 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=4.6 loops=2 tool_calls=4 cache_hit=0 err=None
+
+--- [treatment] 4/5 Artificial Analysis 现在智能指数第一是谁，开源最高是谁？关注 v5.0.2 最近30天数据。 ---
+2026-11-26 00:30:57.683 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (2618 字)
+2026-11-26 00:30:57.683 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-26 00:30:57.685 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-26 00:30:57.685 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+Task exception was never retrieved
+future: <Task finished name='Task-645' coro=<AsyncClient.aclose() done, defined at /Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py:2197> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_client.py", line 2207, in aclose
+    await proxy.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpx2/_transports/default.py", line 400, in aclose
+    await self._pool.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 382, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/connection_pool.py", line 374, in _close_connections
+    await connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http_proxy.py", line 336, in aclose
+    await self._connection.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_async/http11.py", line 236, in aclose
+    await self._network_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/httpcore2/_backends/anyio.py", line 56, in aclose
+    await self._stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/streams/tls.py", line 262, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/zhousl/Developer/workspace/github_repo/DeepResearch/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 1499, in aclose
+    self._transport.abort()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 825, in abort
+    self._force_close(None)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/selector_events.py", line 895, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+    self._check_closed()
+  File "/Users/zhousl/.local/share/uv/python/cpython-3.11.18-macos-aarch64-none/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+2026-11-26 00:30:57.687 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:30:58.114 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: Artificial Analysis 现在智能指数第一是谁，开源最高是谁？关注 v5.0.2 最近30天数...' → 20 hits (top score=0.391)
+2026-11-26 00:30:58.114 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-26 00:30:58.114 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-26 00:30:58.117 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:31:02.935 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['Artificial Analysis Intelligence Index v5.0.2 leaderboard current number one overall model November 2026 last 30 days', 'Artificial Analysis open weights leaderboard highest score model November 2026 license DeepSeek GLM']
+2026-11-26 00:31:02.936 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#13 fresh_level=medium window=30d query='Artificial Analysis Intelligence Index v5.0.2 leaderboard current number one overall model November 2026 last 30 days' timed_query='Artificial Analysis Intelligence Index v5.0.2 leaderboard current number one overall model November 2026 last 30 days 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:31:02.937 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#14 fresh_level=medium window=30d query='Artificial Analysis open weights leaderboard highest score model November 2026 license DeepSeek GLM' timed_query='Artificial Analysis open weights leaderboard highest score model November 2026 license DeepSeek GLM 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:31:03.323 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis open weights leaderboard highest score model November 2026 l' 未命中，将通过MCP搜索
+2026-11-26 00:31:03.323 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis Intelligence Index v5.0.2 leaderboard current number one ove' 未命中，将通过MCP搜索
+2026-11-26 00:31:03.324 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='Artificial Analysis open weights leaderboard highest score model November 2026 l'
+2026-11-26 00:31:03.324 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='Artificial Analysis Intelligence Index v5.0.2 leaderboard current number one ove'
+2026-11-26 00:31:03.333 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis Intelligence Index v5.0.2 leaderboard current number one ove' 未命中，将通过MCP搜索
+2026-11-26 00:31:03.333 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis open weights leaderboard highest score model November 2026 l' 未命中，将通过MCP搜索
+2026-11-26 00:31:03.333 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-26 00:31:03.424 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-26 00:31:04.844 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Artificial Analysis Intelligence Index v5.0.2 leaderboard current number one ove' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:31:04.847 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:31:04.982 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Artificial Analysis open weights leaderboard highest score model November 2026 l' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:31:04.984 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:31:08.989 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:31:11.731 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:31:18.156 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 5 条事实，stats={'call_count': 14, 'cache_hit_count': 0, 'cache_miss_count': 14, 'fallback_count': 2}
+2026-11-26 00:31:18.156 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='Artificial Analysis open weights leaderboard highest score model November 2026 license DeepSeek GLM' fresh_level=medium facts=5
+2026-11-26 00:31:18.158 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:31:21.450 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 3 条事实，stats={'call_count': 14, 'cache_hit_count': 0, 'cache_miss_count': 14, 'fallback_count': 2}
+2026-11-26 00:31:21.451 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='Artificial Analysis Intelligence Index v5.0.2 leaderboard current number one overall model November 2026 last 30 days' fresh_level=medium facts=3
+2026-11-26 00:31:21.453 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:31:52.398 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 8 facts from summary (914 chars)
+2026-11-26 00:31:52.398 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 8 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:31:53.040 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 8 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:31:53.433 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-26 00:31:53.434 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:32:13.204 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='目前信息不足以撰写完整报告，主要缺口：1）缺少Artificial Analysis官方榜单v5.0.2当前默认版本的直接数据与时间戳，无法确认总榜第一及开源最...'
+2026-11-26 00:32:13.204 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-26 00:32:13.205 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#15 fresh_level=medium window=30d query='site:artificialanalysis.ai Intelligence Index leaderboard November 2026 v5.0.2 top models scores Anthropic Fable 5.2 OpenAI GPT-6.2 Astra DeepSeek V4.1 Flash open weights ranking' timed_query='site:artificialanalysis.ai Intelligence Index leaderboard November 2026 v5.0.2 top models scores Anthropic Fable 5.2 OpenAI GPT-6.2 Astra DeepSeek V4.1 Flash open weights ranking 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:32:13.205 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#16 fresh_level=medium window=30d query='Artificial Analysis Intelligence Index v5.0.2 changelog methodology October November 2026 recent 30-day ranking changes open-source models GLM-5.3 MiMo-V2.6-Pro' timed_query='Artificial Analysis Intelligence Index v5.0.2 changelog methodology October November 2026 recent 30-day ranking changes open-source models GLM-5.3 MiMo-V2.6-Pro 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:32:13.221 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis Intelligence Index v5.0.2 changelog methodology October Nove' 未命中，将通过MCP搜索
+2026-11-26 00:32:13.221 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='Artificial Analysis Intelligence Index v5.0.2 changelog methodology October Nove'
+2026-11-26 00:32:13.221 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'site:artificialanalysis.ai Intelligence Index leaderboard November 2026 v5.0.2 t' 未命中，将通过MCP搜索
+2026-11-26 00:32:13.222 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='site:artificialanalysis.ai Intelligence Index leaderboard November 2026 v5.0.2 t'
+2026-11-26 00:32:13.230 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'Artificial Analysis Intelligence Index v5.0.2 changelog methodology October Nove' 未命中，将通过MCP搜索
+2026-11-26 00:32:13.231 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'site:artificialanalysis.ai Intelligence Index leaderboard November 2026 v5.0.2 t' 未命中，将通过MCP搜索
+2026-11-26 00:32:13.231 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-26 00:32:13.323 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-26 00:32:14.582 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'Artificial Analysis Intelligence Index v5.0.2 changelog methodology October Nove' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:32:14.582 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'site:artificialanalysis.ai Intelligence Index leaderboard November 2026 v5.0.2 t' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:32:14.586 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:32:14.587 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:32:21.239 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:32:24.732 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:32:32.401 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 5 条事实，stats={'call_count': 16, 'cache_hit_count': 0, 'cache_miss_count': 16, 'fallback_count': 2}
+2026-11-26 00:32:32.401 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='site:artificialanalysis.ai Intelligence Index leaderboard November 2026 v5.0.2 top models scores Anthropic Fable 5.2 OpenAI GPT-6.2 Astra DeepSeek V4.1 Flash open weights ranking' fresh_level=medium facts=5
+2026-11-26 00:32:32.404 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:32:34.038 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 3 条事实，stats={'call_count': 16, 'cache_hit_count': 0, 'cache_miss_count': 16, 'fallback_count': 2}
+2026-11-26 00:32:34.038 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='Artificial Analysis Intelligence Index v5.0.2 changelog methodology October November 2026 recent 30-day ranking changes open-source models GLM-5.3 MiMo-V2.6-Pro' fresh_level=medium facts=3
+2026-11-26 00:32:34.039 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:33:07.624 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 5 facts from summary (503 chars)
+2026-11-26 00:33:07.624 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 5 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:33:07.958 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 5 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:33:31.111 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 7 facts from summary (1075 chars)
+2026-11-26 00:33:31.111 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 7 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:33:31.567 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 7 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:33:31.569 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-26 00:33:31.572 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:33:58.491 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息已可初步判断总榜第一为Claude Fable 5.2、开源最高可能为DeepSeek V4.1 Flash 1017，但距离撰写完整研报仍存在缺口：1...'
+2026-11-26 00:33:58.492 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-26 00:33:58.495 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-26 00:34:04.076 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (583 chars)
+2026-11-26 00:34:04.078 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-26 00:34:04.078 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-26 00:34:55.382 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (13472 chars)
+2026-11-26 00:34:55.383 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:35:43.977 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=4.0/10, issues=6 (critical=1, major=3, minor=2), ready_for_polish=False
+2026-11-26 00:35:43.978 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=4.0/10) → draft
+2026-11-26 00:35:43.978 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-26 00:35:43.978 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-26 00:36:29.884 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (7055 chars)
+2026-11-26 00:36:29.884 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:37:29.358 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.5/10, issues=5 (critical=0, major=2, minor=3), ready_for_polish=False
+2026-11-26 00:37:29.358 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:215 - [WriterAgent] qualified exit (score=6.5/10 >= 6.0, revision=1) → polish
+2026-11-26 00:37:29.360 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-26 00:38:11.975 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (8326 chars), 0 sources cited, 1 revision(s)
+2026-11-26 00:38:11.978 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-26 00:38:11.980 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=4.8 loops=2 tool_calls=4 cache_hit=0 err=None
+
+--- [treatment] 5/5 2026年11月1日到25日这波大模型发布与榜单变化，按时间排清楚。 ---
+2026-11-26 00:39:22.251 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (3175 字)
+2026-11-26 00:39:22.251 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-26 00:39:22.255 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-26 00:39:22.256 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+2026-11-26 00:39:22.257 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:39:22.983 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: 2026年11月1日到25日这波大模型发布与榜单变化，按时间排清楚。
+Assistant: # 需求清晰度进...' → 20 hits (top score=0.374)
+2026-11-26 00:39:22.983 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-26 00:39:22.983 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-26 00:39:22.985 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:39:26.461 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 MiniMax 字节豆包 开源模型 API 更新 重大版本', '2026年11月1日-25日 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompass SuperCLUE 榜单变化 新模型上榜 排名 分数 评测']
+2026-11-26 00:39:26.462 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#17 fresh_level=medium window=30d query='2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 MiniMax 字节豆包 开源模型 API 更新 重大版本' timed_query='2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 MiniMax 字节豆包 开源模型 API 更新 重大版本 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:39:26.462 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#18 fresh_level=medium window=30d query='2026年11月1日-25日 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompass SuperCLUE 榜单变化 新模型上榜 排名 分数 评测' timed_query='2026年11月1日-25日 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompass SuperCLUE 榜单变化 新模型上榜 排名 分数 评测 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:39:26.515 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日-25日 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard Ope' 未命中，将通过MCP搜索
+2026-11-26 00:39:26.515 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='2026年11月1日-25日 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard Ope'
+2026-11-26 00:39:26.515 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 Mini' 未命中，将通过MCP搜索
+2026-11-26 00:39:26.515 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 Mini'
+2026-11-26 00:39:26.523 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日-25日 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard Ope' 未命中，将通过MCP搜索
+2026-11-26 00:39:26.525 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 Mini' 未命中，将通过MCP搜索
+2026-11-26 00:39:26.526 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.081 秒
+2026-11-26 00:39:26.617 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.081秒
+2026-11-26 00:39:28.552 +08:00 | WARNING  | agent.base_agent:_pages_from_plain_text:542 - [WebSearch] MCP 返回非 JSON 文本，降级为单页结果 (len=162)
+2026-11-26 00:39:28.576 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 Mini' （1 items, TTL=3600s）→ Redis
+2026-11-26 00:39:28.576 +08:00 | WARNING  | agent.tools.generated_tools:time_aware_search:219 - [time_aware_search] 无真实来源页面，回退原因=no_real_pages
+2026-11-26 00:39:28.576 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:249 - [ResearchAgent] time_aware_search 无结果，回退原搜索：query='2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 MiniMax 字节豆包 开源模型 API 更新 重大版本'
+2026-11-26 00:39:28.584 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 Mini' 未命中，将通过MCP搜索
+2026-11-26 00:39:28.806 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月1日-25日 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard Ope' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:39:28.808 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:39:30.440 +08:00 | WARNING  | agent.base_agent:_pages_from_plain_text:542 - [WebSearch] MCP 返回非 JSON 文本，降级为单页结果 (len=162)
+2026-11-26 00:39:30.806 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 Mini' （1 items, TTL=3600s）→ Redis
+2026-11-26 00:39:30.806 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-26 00:39:30.808 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:39:33.504 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： '2026年11月1日-25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 MiniMax 字节豆包 开源模型 API 更新 重大版本'
+2026-11-26 00:39:33.505 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:39:46.496 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:39:51.853 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 0 facts from summary (264 chars)
+2026-11-26 00:40:25.991 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 9 条事实，stats={'call_count': 18, 'cache_hit_count': 0, 'cache_miss_count': 18, 'fallback_count': 3}
+2026-11-26 00:40:25.991 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='2026年11月1日-25日 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompass SuperCLUE 榜单变化 新模型上榜 排名 分数 评测' fresh_level=medium facts=9
+2026-11-26 00:40:25.994 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:42:09.154 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-26 00:42:09.156 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:42:20.208 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前网络采集信息严重不足。仅有少量榜单快照（LMArena 2026-11-06、DataLearner 2026-11-11/14/21），缺少以下关键内容：...'
+2026-11-26 00:42:20.209 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-26 00:42:20.209 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#19 fresh_level=medium window=30d query='2026年11月1日至11月25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 MiniMax 字节豆包 版本更新 API开放 开源权重' timed_query='2026年11月1日至11月25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 MiniMax 字节豆包 版本更新 API开放 开源权重 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:42:20.209 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:193 - [time_aware_search] CALL#20 fresh_level=medium window=30d query='2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompass SuperCLUE SWE-bench MMMU 排名变化 分数变化 新模型上榜 榜单规则更新' timed_query='2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompass SuperCLUE SWE-bench MMMU 排名变化 分数变化 新模型上榜 榜单规则更新 最近30天 2026年11月 最新 优先官方或一手来源 site:gov OR 官方公告 OR 一手报道'
+2026-11-26 00:42:20.233 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日至11月25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 M' 未命中，将通过MCP搜索
+2026-11-26 00:42:20.233 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='2026年11月1日至11月25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 M'
+2026-11-26 00:42:20.233 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompa' 未命中，将通过MCP搜索
+2026-11-26 00:42:20.233 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:205 - [time_aware_search] cache_hit=False prompt='2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompa'
+2026-11-26 00:42:20.243 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月1日至11月25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 M' 未命中，将通过MCP搜索
+2026-11-26 00:42:20.244 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompa' 未命中，将通过MCP搜索
+2026-11-26 00:42:20.244 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-26 00:42:20.336 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-26 00:42:22.111 +08:00 | WARNING  | agent.base_agent:_pages_from_plain_text:542 - [WebSearch] MCP 返回非 JSON 文本，降级为单页结果 (len=162)
+2026-11-26 00:42:22.124 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompa' （1 items, TTL=3600s）→ Redis
+2026-11-26 00:42:22.124 +08:00 | WARNING  | agent.tools.generated_tools:time_aware_search:219 - [time_aware_search] 无真实来源页面，回退原因=no_real_pages
+2026-11-26 00:42:22.124 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:249 - [ResearchAgent] time_aware_search 无结果，回退原搜索：query='2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompass SuperCLUE SWE-bench MMMU 排名变化 分数变化 新模型上榜 榜单规则更新'
+2026-11-26 00:42:22.133 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — '2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompa' 未命中，将通过MCP搜索
+2026-11-26 00:42:22.961 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月1日至11月25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 M' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:42:22.963 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:42:23.966 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — '2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompa' （10 items, TTL=3600s）→ Redis
+2026-11-26 00:42:23.967 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-26 00:42:23.970 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:42:48.852 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： '2026年11月 LMArena Artificial Analysis Hugging Face Open LLM Leaderboard OpenCompass SuperCLUE SWE-bench MMMU 排名变化 分数变化 新模型上榜 榜单规则更新'
+2026-11-26 00:42:48.855 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:42:56.040 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-26 00:43:33.973 +08:00 | INFO     | agent.tools.generated_tools:time_aware_search:275 - [time_aware_search] 返回 17 条事实，stats={'call_count': 20, 'cache_hit_count': 0, 'cache_miss_count': 20, 'fallback_count': 4}
+2026-11-26 00:43:33.973 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:220 - [ResearchAgent] time_aware_search 命中：query='2026年11月1日至11月25日 大模型发布 时间线 OpenAI Anthropic Google DeepSeek 阿里通义 百度文心 智谱 月之暗面 MiniMax 字节豆包 版本更新 API开放 开源权重' fresh_level=medium facts=17
+2026-11-26 00:43:33.974 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:45:09.321 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (2819 chars)
+2026-11-26 00:45:09.321 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-26 00:45:09.833 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-26 00:45:09.834 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-26 00:45:09.836 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-26 00:45:32.590 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前采集信息主要覆盖2026年11月4日—19日的部分事件（腾讯混元、字节Seedream/Seedance、Google Gemini 4 Hydrogen/...'
+2026-11-26 00:45:32.590 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-26 00:45:32.592 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-26 00:45:52.365 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (3470 chars)
+2026-11-26 00:45:52.366 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-26 00:45:52.366 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-26 00:47:32.453 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (28966 chars)
+2026-11-26 00:47:32.453 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:48:47.415 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=5.0/10, issues=11 (critical=2, major=5, minor=4), ready_for_polish=False
+2026-11-26 00:48:47.415 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=5.0/10) → draft
+2026-11-26 00:48:47.416 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-26 00:48:47.416 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-26 00:50:55.192 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (20147 chars)
+2026-11-26 00:50:55.192 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-26 00:52:05.214 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=7.5/10, issues=5 (critical=0, major=1, minor=4), ready_for_polish=True
+2026-11-26 00:52:05.215 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:201 - [WriterAgent] Critic ready_for_polish (score=7.5/10) → polish
+2026-11-26 00:52:05.216 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-26 00:53:16.282 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (19022 chars), 0 sources cited, 1 revision(s)
+2026-11-26 00:53:16.284 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-26 00:53:16.285 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+overall=4.2 loops=2 tool_calls=4 cache_hit=0 err=None
+
+对照表: /Users/zhousl/Developer/workspace/github_repo/DeepResearch/runs/mvp_20261125/ab_comparison.json
+结论: 删 | {'better_count>=3': True, 'no_clear_worse': False, 'timeliness_or_citation_up': True, 'tool_actually_called': True, 'better': 3, 'worse': 2, 'tie': 0, 'error': 0}
+[更好] 3.8 -> 4.6 | loops 2→2 | calls=4 | ToolSmith 是什么，四阶段怎么跑，效果到底多大？
+[变差] 4.6 -> 4.4 | loops 2→2 | calls=4 | OpenAI 公开了什么，又提议了什么？关注最近一周尤其是11月20日到25日的动态。
+[更好] 4.2 -> 4.6 | loops 2→2 | calls=4 | LMArena 文本榜和 Agent Arena 到底是不是同一张榜？最近30天的排名分别是什么？
+[更好] 4.2 -> 4.8 | loops 2→2 | calls=4 | Artificial Analysis 现在智能指数第一是谁，开源最高是谁？关注 v5.0.2 最近
+[变差] 4.4 -> 4.2 | loops 2→2 | calls=4 | 2026年11月1日到25日这波大模型发布与榜单变化，按时间排清楚。

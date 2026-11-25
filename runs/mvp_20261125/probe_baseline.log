@@ -1,0 +1,86 @@
+2026-11-25 22:14:21.942 +08:00 | INFO     | agent.search_cache:_get_redis:75 - [Cache] Redis 连接成功，缓存跨实例共享
+2026-11-25 22:14:21.976 +08:00 | INFO     | agent.search_cache:clear_cache:190 - [Cache] cleared all 0 entries (Redis)
+2026-11-25 22:14:21.976 +08:00 | INFO     | eval.judge:__init__:165 - Judge 已初始化，模型=deepseek-v4-pro
+2026-11-25 22:14:38.894 +08:00 | INFO     | agent.graph:generate_plan:78 - [MainGraph] 生成的计划 (2560 字)
+2026-11-25 22:14:38.895 +08:00 | INFO     | agent.graph:evaluate_plan:100 - [MainGraph] 等待用户确认计划
+2026-11-25 22:14:38.899 +08:00 | INFO     | agent.graph:evaluate_plan:107 - [MainGraph] 计划已提交确认 → 评估
+2026-11-25 22:14:38.900 +08:00 | INFO     | agent.graph:confirm_plan:121 - [MainGraph] plan explicitly confirmed → research
+2026-11-25 22:14:39.164 +08:00 | INFO     | agent.kb.fact_store:_ensure_collection:285 - [KB] collection 'research_facts' already exists
+2026-11-25 22:14:39.164 +08:00 | INFO     | agent.sub_agents.research_agent:_get_kb_store:68 - [KB] FactStor 连接到 Milvus
+2026-11-25 22:14:39.165 +08:00 | DEBUG    | agent.reranker:__init__:79 - [Reranker] 已初始化（KB 和 Web 精排均已禁用）
+2026-11-25 22:14:39.165 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 1 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:14:39.642 +08:00 | INFO     | agent.kb.fact_store:query:250 - [KB] query 'User: ToolSmith 是什么，四阶段怎么跑，效果到底多大？
+Assistant: # 需求清晰度进度条: 30...' → 20 hits (top score=0.424)
+2026-11-25 22:14:39.643 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:140 - [KB] 检索到 20 个facts 用作查询生成上下文
+2026-11-25 22:14:39.643 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:147 - [ResearchAgent] _generate_queries使用模型: deepseek-flash
+2026-11-25 22:14:39.645 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:14:42.490 +08:00 | INFO     | agent.sub_agents.research_agent:_generate_queries:166 - [ResearchAgent] 生成 2 个查询: ['ToolSmith arXiv 2611.31198 automatic tool-generation framework multimodal search agents four phases pipeline architecture', 'ToolSmith multimodal search agents benchmark results baseline comparison ablation GPT-5 effectiveness evidence reproduction code']
+2026-11-25 22:14:42.591 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith arXiv 2611.31198 automatic tool-generation framework multimodal search' 未命中，将通过MCP搜索
+2026-11-25 22:14:42.591 +08:00 | INFO     | agent.base_agent:__init__:43 - 速率限制器已初始化: 最大QPS=12.0, 最小间隔=0.083秒
+2026-11-25 22:14:42.631 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith multimodal search agents benchmark results baseline comparison ablatio' 未命中，将通过MCP搜索
+2026-11-25 22:14:42.631 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.044 秒
+2026-11-25 22:14:42.680 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.044秒
+2026-11-25 22:14:43.717 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith arXiv 2611.31198 automatic tool-generation framework multimodal search' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:14:43.718 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:14:43.721 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:14:45.407 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith multimodal search agents benchmark results baseline comparison ablatio' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:14:45.408 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:14:45.412 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:14:51.706 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith arXiv 2611.31198 automatic tool-generation framework multimodal search agents four phases pipeline architecture'
+2026-11-25 22:14:51.709 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:14:54.897 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith multimodal search agents benchmark results baseline comparison ablation GPT-5 effectiveness evidence reproduction code'
+2026-11-25 22:14:54.899 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:16:23.976 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (921 chars)
+2026-11-25 22:16:23.976 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:16:24.504 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:16:24.635 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (753 chars)
+2026-11-25 22:16:24.636 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:16:25.038 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:16:25.040 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 22:16:25.043 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:16:47.110 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前网络信息已明确 ToolSmith 的定义、四阶段简要流程和部分效果数据（如 1–3 分提升、成本数据），但缺乏对 ToolSmith 局限性、适用边界、失...'
+2026-11-25 22:16:47.111 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:390 - [ResearchAgent] 继续循环 (1/2)
+2026-11-25 22:16:47.218 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith four-stage pipeline implementation details: trajectory mining algorith' 未命中，将通过MCP搜索
+2026-11-25 22:16:47.218 +08:00 | INFO     | agent.search_cache:get_cached:103 - [Cache] ✗ MISS — 'ToolSmith limitations and failure cases, reproducibility study, independent eval' 未命中，将通过MCP搜索
+2026-11-25 22:16:47.218 +08:00 | DEBUG    | agent.base_agent:acquire:58 - 速率限制：需要等待 0.083 秒
+2026-11-25 22:16:47.306 +08:00 | DEBUG    | agent.base_agent:_attempt:432 - 速率限制等待: 0.083秒
+2026-11-25 22:16:48.339 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith limitations and failure cases, reproducibility study, independent eval' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:16:48.339 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:16:48.342 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:16:48.744 +08:00 | INFO     | agent.search_cache:set_cached:159 - [Cache] stored — 'ToolSmith four-stage pipeline implementation details: trajectory mining algorith' （10 items, TTL=3600s）→ Redis
+2026-11-25 22:16:48.744 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:297 - [ResearchAgent] _web_search 使用模型: deepseek-flash
+2026-11-25 22:16:48.748 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-flash
+2026-11-25 22:17:02.991 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith limitations and failure cases, reproducibility study, independent evaluation and criticism'
+2026-11-25 22:17:02.994 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:17:04.381 +08:00 | INFO     | agent.sub_agents.research_agent:_web_search:306 - [ResearchAgent] 已搜索： 'ToolSmith four-stage pipeline implementation details: trajectory mining algorithm, tool validation criteria, routing mechanism, ablation study on hyperparameters'
+2026-11-25 22:17:04.383 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:18:21.222 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1524 chars)
+2026-11-25 22:18:21.222 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:18:21.586 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:18:43.548 +08:00 | INFO     | agent.kb.extractor:extract:104 - [KB-extractor] extracted 10 facts from summary (1964 chars)
+2026-11-25 22:18:43.548 +08:00 | DEBUG    | agent.kb.fact_store:_embed:380 - [KB] embedding 10 texts via https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings (model=qwen3.7-text-embedding-flash, attempt=1)
+2026-11-25 22:18:43.998 +08:00 | INFO     | agent.kb.fact_store:add_facts:103 - [KB] stored 10 facts → Milvus/research_facts (topics: {''})
+2026-11-25 22:18:44.000 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:341 - [ResearchAgent] _critique评估使用模型: deepseek-v4-pro
+2026-11-25 22:18:44.003 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+2026-11-25 22:19:26.227 +08:00 | INFO     | agent.sub_agents.research_agent:_critique:367 - [ResearchAgent] 评估是否充足结果：False, gap='当前信息已能界定ToolSmith为多模态搜索智能体的四阶段自动工具生成框架，并已有基础效果数据、同名工作区分和部分局限性证据，但尚不足以撰写完整研报。主要缺口...'
+2026-11-25 22:19:26.228 +08:00 | INFO     | agent.sub_agents.research_agent:_route_after_critique:387 - [ResearchAgent] 退出循环，已执行 2 次
+2026-11-25 22:19:26.231 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:56 - [WriterAgent] outline 准备使用模型=deepseek-flash
+2026-11-25 22:19:39.548 +08:00 | INFO     | agent.sub_agents.writer_agent:_outline:66 - [WriterAgent] outline generated (2330 chars)
+2026-11-25 22:19:39.549 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 22:19:39.549 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:100 - [WriterAgent] drafting from scratch
+2026-11-25 22:20:36.418 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (14614 chars)
+2026-11-25 22:20:36.420 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 22:21:23.194 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=6.5/10, issues=5 (critical=0, major=2, minor=3), ready_for_polish=False
+2026-11-25 22:21:23.195 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:229 - [WriterAgent] needs revision (rev=0/3, score=6.5/10) → draft
+2026-11-25 22:21:23.196 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:83 - [WriterAgent] _draft 准备使用模型=deepseek-flash
+2026-11-25 22:21:23.196 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:90 - [WriterAgent] revising draft (revision 1)
+2026-11-25 22:22:08.721 +08:00 | INFO     | agent.sub_agents.writer_agent:_draft:115 - [WriterAgent] draft generated (10861 chars)
+2026-11-25 22:22:08.723 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:126 - [WriterAgent] critic reviewing draft 准备使用模型=deepseek-flash
+2026-11-25 22:22:47.771 +08:00 | INFO     | agent.sub_agents.writer_agent:_critic_review:165 - [WriterAgent] critic score=7.8/10, issues=6 (critical=0, major=1, minor=5), ready_for_polish=True
+2026-11-25 22:22:47.772 +08:00 | INFO     | agent.sub_agents.writer_agent:_route_after_critic:201 - [WriterAgent] Critic ready_for_polish (score=7.8/10) → polish
+2026-11-25 22:22:47.773 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:240 - [WriterAgent] polishing 准备使用模型=deepseek-flash
+2026-11-25 22:23:38.115 +08:00 | INFO     | agent.sub_agents.writer_agent:_cite_and_polish:275 - [WriterAgent] polished (13412 chars), 28 sources cited, 1 revision(s)
+2026-11-25 22:23:38.117 +08:00 | INFO     | eval.judge:evaluate_report:202 - 端到端开始评估.........
+2026-11-25 22:23:38.119 +08:00 | DEBUG    | agent.llm.llm:generate_response:74 - 本次访问LLM模型为：deepseek-v4-pro
+[Judge] 第 1 次尝试成功，解析出 8 个顶层键
+RESULT {'topic': 'ToolSmith 是什么，四阶段怎么跑，效果到底多大？', 'error': None, 'overall': 4.2, 'research_loop_count': 2, 'number_of_ran_queries': 6, 'is_sufficient': False, 'fresh_level': 'medium', 'tool_calls': 0, 'cache_hits': 0, 'cache_misses': 0, 'fallbacks': 0, 'report_path': '../runs/mvp_20261125/probe_baseline_ToolSmith_是什么_四阶段怎么跑_效果到底多大_.md', 'report_chars': 13412} dims {'factual_accuracy': 4, 'information_coverage': 4, 'logical_structure': 5, 'timeliness': 4, 'citation_quality': 4}

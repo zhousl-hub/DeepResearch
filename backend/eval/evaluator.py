@@ -39,9 +39,22 @@ from eval.judge import (
 load_dotenv()
 
 
+_EVAL_LOOP: asyncio.AbstractEventLoop | None = None
+
+
+def _get_eval_loop() -> asyncio.AbstractEventLoop:
+    """复用同一事件循环，避免每题 asyncio.run 关闭 loop 后 httpx 残留任务崩溃。"""
+    global _EVAL_LOOP
+    if _EVAL_LOOP is None or _EVAL_LOOP.is_closed():
+        _EVAL_LOOP = asyncio.new_event_loop()
+        asyncio.set_event_loop(_EVAL_LOOP)
+    return _EVAL_LOOP
+
+
 def _invoke_graph(input_state: dict, config: dict) -> dict:
     """同步包装 ainvoke：主图节点均为 async，sync invoke 会直接失败。"""
-    return asyncio.run(graph.ainvoke(input_state, config=config))
+    loop = _get_eval_loop()
+    return loop.run_until_complete(graph.ainvoke(input_state, config=config))
 
 
 # ============================================================
